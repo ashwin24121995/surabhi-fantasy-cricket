@@ -439,6 +439,234 @@
             color: var(--gray-400);
         }
         
+        /* Live Matches Section */
+        .matches-section {
+            padding: 4rem 4rem;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+        
+        .matches-section .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+        
+        .matches-section .section-title {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .matches-section .section-title h2 {
+            font-size: 2rem;
+            font-weight: 800;
+        }
+        
+        .matches-section .live-badge {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(239, 68, 68, 0.2);
+            color: #ef4444;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+        
+        .matches-section .live-badge .pulse {
+            width: 8px;
+            height: 8px;
+            background: #ef4444;
+            border-radius: 50%;
+            animation: pulse 1.5s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.2); }
+        }
+        
+        .matches-section .view-all {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .matches-section .view-all:hover {
+            color: var(--primary-light);
+            gap: 0.75rem;
+        }
+        
+        .matches-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .match-card-home {
+            background: var(--dark-2);
+            border-radius: var(--radius-xl);
+            padding: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .match-card-home:hover {
+            transform: translateY(-5px);
+            border-color: rgba(22, 163, 74, 0.3);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .match-card-home.live {
+            border-color: rgba(239, 68, 68, 0.3);
+            background: linear-gradient(135deg, var(--dark-2) 0%, rgba(239, 68, 68, 0.1) 100%);
+        }
+        
+        .match-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .match-type-badge {
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 0.25rem 0.75rem;
+            border-radius: 50px;
+            background: rgba(22, 163, 74, 0.2);
+            color: var(--primary);
+        }
+        
+        .match-type-badge.live {
+            background: rgba(239, 68, 68, 0.2);
+            color: #ef4444;
+        }
+        
+        .match-time-badge {
+            font-size: 0.8rem;
+            color: var(--gray-400);
+        }
+        
+        .match-teams-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+        }
+        
+        .team-info-home {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            flex: 1;
+        }
+        
+        .team-info-home img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: contain;
+            background: var(--dark-3);
+            padding: 5px;
+        }
+        
+        .team-info-home .team-name {
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-align: center;
+            max-width: 100px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        .team-info-home .team-score {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .vs-badge {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--gray-500);
+            padding: 0 1rem;
+        }
+        
+        .match-status {
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--gray-400);
+            padding: 0.75rem;
+            background: var(--dark-3);
+            border-radius: var(--radius-md);
+            margin-bottom: 1rem;
+        }
+        
+        .match-status.live {
+            color: #ef4444;
+            background: rgba(239, 68, 68, 0.1);
+        }
+        
+        .match-card-footer {
+            display: flex;
+            gap: 0.75rem;
+        }
+        
+        .match-card-footer .btn {
+            flex: 1;
+            padding: 0.75rem;
+            font-size: 0.85rem;
+        }
+        
+        .no-matches-message {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 3rem;
+            background: var(--dark-2);
+            border-radius: var(--radius-xl);
+            border: 1px dashed rgba(255, 255, 255, 0.1);
+        }
+        
+        .no-matches-message .icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .no-matches-message h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .no-matches-message p {
+            color: var(--gray-400);
+        }
+        
+        @media (max-width: 768px) {
+            .matches-section {
+                padding: 3rem 1.5rem;
+            }
+            
+            .matches-section .section-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+            
+            .matches-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
         /* Bento Grid Section */
         .bento-section {
             padding: 6rem 4rem;
@@ -1221,6 +1449,24 @@
         </div>
     </section>
 
+    <!-- Live Matches Section -->
+    <section class="matches-section" id="liveMatchesSection">
+        <div class="section-header">
+            <div class="section-title">
+                <h2>🔴 Live Matches</h2>
+                <span class="live-badge" id="liveCountBadge"><span class="pulse"></span> <span id="liveMatchCount">0</span> Live</span>
+            </div>
+            <a href="pages/matches.html" class="view-all">View All Matches →</a>
+        </div>
+        <div class="matches-grid" id="liveMatchesGrid">
+            <div class="no-matches-message">
+                <div class="icon">🏏</div>
+                <h3>No Live Matches</h3>
+                <p>There are no live matches at the moment. Check back soon!</p>
+            </div>
+        </div>
+    </section>
+
     <!-- Bento Features Section -->
     <section class="bento-section">
         <div class="section-header">
@@ -1266,6 +1512,23 @@
                 <div class="bento-icon">⚖️</div>
                 <h3>Fair Play Guaranteed</h3>
                 <p>Our advanced systems ensure fair competition for everyone. No bots, no cheating – just pure skill-based gameplay. We believe in complete transparency with our users.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Upcoming Matches Section -->
+    <section class="matches-section" id="upcomingMatchesSection">
+        <div class="section-header">
+            <div class="section-title">
+                <h2>📅 Upcoming Matches</h2>
+            </div>
+            <a href="pages/matches.html" class="view-all">View All Matches →</a>
+        </div>
+        <div class="matches-grid" id="upcomingMatchesGrid">
+            <div class="no-matches-message">
+                <div class="icon">⏳</div>
+                <h3>Loading Matches...</h3>
+                <p>Fetching upcoming matches from the server.</p>
             </div>
         </div>
     </section>
@@ -1363,6 +1626,23 @@
                         <p>Geo-Restrictions</p>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Completed Matches Section -->
+    <section class="matches-section" id="completedMatchesSection">
+        <div class="section-header">
+            <div class="section-title">
+                <h2>✅ Recent Results</h2>
+            </div>
+            <a href="pages/matches.html" class="view-all">View All Results →</a>
+        </div>
+        <div class="matches-grid" id="completedMatchesGrid">
+            <div class="no-matches-message">
+                <div class="icon">⏳</div>
+                <h3>Loading Results...</h3>
+                <p>Fetching recent match results from the server.</p>
             </div>
         </div>
     </section>
@@ -1527,7 +1807,200 @@
         document.addEventListener('DOMContentLoaded', () => {
             updateNavigation();
             window.scrollTo(0, 0);
+            initializeMatches();
         });
+        
+        // Matches functionality
+        let matchesData = { live: [], upcoming: [], completed: [] };
+        let liveRefreshInterval = null;
+        let upcomingRefreshInterval = null;
+        
+        async function initializeMatches() {
+            await fetchAllMatches();
+            // Refresh live matches every 3 seconds
+            liveRefreshInterval = setInterval(fetchLiveMatches, 3000);
+            // Refresh upcoming matches every 1 hour
+            upcomingRefreshInterval = setInterval(fetchAllMatches, 3600000);
+        }
+        
+        async function fetchAllMatches() {
+            try {
+                const response = await fetch('/api/cricket/current-matches');
+                const data = await response.json();
+                
+                if (data.success) {
+                    matchesData = {
+                        live: data.live || [],
+                        upcoming: (data.upcoming || []).slice(0, 6), // Show only 6 upcoming
+                        completed: (data.completed || []).slice(0, 6) // Show only 6 completed
+                    };
+                    
+                    renderLiveMatches();
+                    renderUpcomingMatches();
+                    renderCompletedMatches();
+                }
+            } catch (error) {
+                console.error('Error fetching matches:', error);
+            }
+        }
+        
+        async function fetchLiveMatches() {
+            try {
+                const response = await fetch('/api/cricket/live-scores');
+                const data = await response.json();
+                
+                if (data.success && data.matches) {
+                    // Update live matches
+                    const liveMatches = data.matches.filter(m => m.matchStarted && !m.matchEnded);
+                    matchesData.live = liveMatches;
+                    renderLiveMatches();
+                }
+            } catch (error) {
+                console.error('Error fetching live scores:', error);
+            }
+        }
+        
+        function renderLiveMatches() {
+            const container = document.getElementById('liveMatchesGrid');
+            const countBadge = document.getElementById('liveCountBadge');
+            const countSpan = document.getElementById('liveMatchCount');
+            
+            countSpan.textContent = matchesData.live.length;
+            countBadge.style.display = matchesData.live.length > 0 ? 'flex' : 'none';
+            
+            if (matchesData.live.length === 0) {
+                container.innerHTML = `
+                    <div class="no-matches-message">
+                        <div class="icon">🏏</div>
+                        <h3>No Live Matches</h3>
+                        <p>There are no live matches at the moment. Check back soon!</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            container.innerHTML = matchesData.live.map(match => createMatchCard(match, 'live')).join('');
+        }
+        
+        function renderUpcomingMatches() {
+            const container = document.getElementById('upcomingMatchesGrid');
+            
+            if (matchesData.upcoming.length === 0) {
+                container.innerHTML = `
+                    <div class="no-matches-message">
+                        <div class="icon">📅</div>
+                        <h3>No Upcoming Matches</h3>
+                        <p>Check back later for upcoming matches.</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            container.innerHTML = matchesData.upcoming.map(match => createMatchCard(match, 'upcoming')).join('');
+        }
+        
+        function renderCompletedMatches() {
+            const container = document.getElementById('completedMatchesGrid');
+            
+            if (matchesData.completed.length === 0) {
+                container.innerHTML = `
+                    <div class="no-matches-message">
+                        <div class="icon">✅</div>
+                        <h3>No Recent Results</h3>
+                        <p>Check back later for match results.</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            container.innerHTML = matchesData.completed.map(match => createMatchCard(match, 'completed')).join('');
+        }
+        
+        function createMatchCard(match, type) {
+            const isLive = type === 'live';
+            const isUpcoming = type === 'upcoming';
+            const isCompleted = type === 'completed';
+            
+            // Get team info
+            const teams = match.teams || [];
+            const team1 = match.teamInfo?.[0] || { name: teams[0] || 'Team 1', img: '' };
+            const team2 = match.teamInfo?.[1] || { name: teams[1] || 'Team 2', img: '' };
+            
+            // Get scores
+            let team1Score = '-';
+            let team2Score = '-';
+            
+            if (match.score && Array.isArray(match.score)) {
+                if (match.score[0]) {
+                    team1Score = `${match.score[0].r || 0}/${match.score[0].w || 0} (${match.score[0].o || 0})`;
+                }
+                if (match.score[1]) {
+                    team2Score = `${match.score[1].r || 0}/${match.score[1].w || 0} (${match.score[1].o || 0})`;
+                }
+            } else if (match.t1s || match.t2s) {
+                team1Score = match.t1s || '-';
+                team2Score = match.t2s || '-';
+            }
+            
+            // Format time
+            let timeDisplay = '';
+            if (match.dateTimeGMT) {
+                const matchDate = new Date(match.dateTimeGMT);
+                const istDate = new Date(matchDate.getTime() + (5.5 * 60 * 60 * 1000));
+                timeDisplay = istDate.toLocaleString('en-IN', { 
+                    day: '2-digit', 
+                    month: 'short', 
+                    hour: '2-digit', 
+                    minute: '2-digit',
+                    hour12: true 
+                });
+            }
+            
+            const matchType = match.matchType?.toUpperCase() || 'MATCH';
+            const status = match.status || (isLive ? 'Live' : isUpcoming ? 'Upcoming' : 'Completed');
+            
+            return `
+                <div class="match-card-home ${isLive ? 'live' : ''}">
+                    <div class="match-card-header">
+                        <span class="match-type-badge ${isLive ? 'live' : ''}">${isLive ? '🔴 LIVE' : matchType}</span>
+                        <span class="match-time-badge">${timeDisplay}</span>
+                    </div>
+                    <div class="match-teams-row">
+                        <div class="team-info-home">
+                            <img src="${team1.img || 'assets/images/cricket-ball.webp'}" alt="${team1.name}" onerror="this.src='assets/images/cricket-ball.webp'">
+                            <span class="team-name">${team1.shortname || team1.name?.substring(0, 15) || 'Team 1'}</span>
+                            ${!isUpcoming ? `<span class="team-score">${team1Score}</span>` : ''}
+                        </div>
+                        <span class="vs-badge">VS</span>
+                        <div class="team-info-home">
+                            <img src="${team2.img || 'assets/images/cricket-ball.webp'}" alt="${team2.name}" onerror="this.src='assets/images/cricket-ball.webp'">
+                            <span class="team-name">${team2.shortname || team2.name?.substring(0, 15) || 'Team 2'}</span>
+                            ${!isUpcoming ? `<span class="team-score">${team2Score}</span>` : ''}
+                        </div>
+                    </div>
+                    <div class="match-status ${isLive ? 'live' : ''}">${status}</div>
+                    <div class="match-card-footer">
+                        ${isUpcoming ? 
+                            `<button class="btn btn-primary" onclick="handleCreateTeam('${match.id}')">Create Team</button>` :
+                            isLive ?
+                            `<a href="pages/matches.html" class="btn btn-primary">Watch Live</a>` :
+                            `<a href="pages/scorecard.html?match=${match.id}" class="btn btn-ghost">View Scorecard</a>`
+                        }
+                    </div>
+                </div>
+            `;
+        }
+        
+        function handleCreateTeam(matchId) {
+            const user = localStorage.getItem('user');
+            if (!user) {
+                sessionStorage.setItem('redirectAfterLogin', `create-team.html?match=${matchId}`);
+                alert('Please login or register to create a team.');
+                window.location.href = 'pages/login.html';
+            } else {
+                window.location.href = `pages/create-team.html?match=${matchId}`;
+            }
+        }
     </script>
 </body>
 </html>
