@@ -175,8 +175,17 @@
                 const response = await fetch(`/api/cricket/squad/${matchId}`);
                 const data = await response.json();
                 
-                if (data.success && data.squads) {
-                    matchData = data.squads;
+                if (data.success && data.squads && Array.isArray(data.squads) && data.squads.length > 0) {
+                    // Store match data with team info for rendering
+                    matchData = {
+                        teamInfo: data.squads.map(team => ({
+                            name: team.teamName,
+                            shortname: team.shortname,
+                            img: team.img
+                        })),
+                        venue: data.squads[0]?.venue || 'Venue TBA',
+                        dateTimeIST: data.squads[0]?.dateTimeIST || 'TBA'
+                    };
                     processPlayers(data.squads);
                     renderPage();
                 } else {
@@ -188,29 +197,33 @@
             }
         }
         
-        function processPlayers(data) {
+        function processPlayers(squads) {
             allPlayers = [];
-            if (data.players && Array.isArray(data.players)) {
-                data.players.forEach(teamData => {
+            // squads is an array of teams: [{teamName, shortname, img, players: [...]}, ...]
+            if (Array.isArray(squads)) {
+                squads.forEach(teamData => {
                     const teamName = teamData.teamName || 'Unknown Team';
-                    const teamImg = data.teamInfo?.find(t => t.name === teamName)?.img || '';
+                    const teamShortname = teamData.shortname || teamName;
+                    const teamImg = teamData.img || '';
                     if (teamData.players && Array.isArray(teamData.players)) {
                         teamData.players.forEach(player => {
                             allPlayers.push({
                                 id: player.id,
                                 name: player.name || 'Unknown',
                                 team: teamName,
+                                teamShortname: teamShortname,
                                 teamImg: teamImg,
                                 role: normalizeRole(player.role || player.playingRole || 'Unknown'),
                                 battingStyle: player.battingStyle || '',
                                 bowlingStyle: player.bowlingStyle || '',
                                 playerImg: player.playerImg || '',
-                                credits: player.credits || calculateCredits(player.role || player.playingRole)
+                                credits: parseFloat(player.credits) || calculateCredits(player.role || player.playingRole)
                             });
                         });
                     }
                 });
             }
+            console.log('Processed players:', allPlayers.length);
         }
         
         function normalizeRole(role) {
