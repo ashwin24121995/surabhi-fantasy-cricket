@@ -642,7 +642,7 @@
                 statusText = match.status || 'Match Completed';
             }
             
-            const fantasyBadge = match.fantasyEnabled ? '<span class="fantasy-badge">⚡ Fantasy</span>' : '';
+            // Fantasy is available for all matches through our API
             
             return `
                 <div class="match-card" data-match-id="${match.id}">
@@ -674,13 +674,13 @@
                             <p class="match-venue">📍 ${match.venue || 'Venue TBA'}</p>
                         </div>
                         <div class="match-card-footer">
-                            ${isUpcoming && match.fantasyEnabled ? 
-                                `<a href="create-team.html?match=${match.id}" class="btn-contest">Create Team ${fantasyBadge}</a>` :
-                                isLive && match.fantasyEnabled ?
-                                `<button class="btn-contest" disabled>Contest Locked ${fantasyBadge}</button>` :
+                            ${isUpcoming ? 
+                                `<a href="create-team.html?match=${match.id}" class="btn-contest">Create Team</a>` :
+                                isLive ?
+                                `<button class="btn-contest" disabled>Contest Locked</button>` :
                                 isCompleted ?
                                 `<a href="scorecard.html?match=${match.id}" class="btn-contest">View Scorecard</a>` :
-                                `<button class="btn-contest" disabled>No Fantasy Available</button>`
+                                `<button class="btn-contest" disabled>Match Data Unavailable</button>`
                             }
                             ${!isUpcoming ? `<button class="btn-scorecard" onclick="openMatchStats('${match.id}')" title="View Statistics">📊</button>` : ''}
                         </div>
