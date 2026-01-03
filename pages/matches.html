@@ -537,7 +537,9 @@
     <!-- Scroll to Top -->
     <button class="scroll-top" id="scrollTop">↑</button>
 
+    <script src="../js/lib/chart.min.js"></script>
     <script src="../js/theme.js"></script>
+    <script src="../js/match-stats.js"></script>
     <script>
         // Tab functionality
         const tabBtns = document.querySelectorAll('.tab-btn');
@@ -680,7 +682,7 @@
                                 `<a href="scorecard.html?match=${match.id}" class="btn-contest">View Scorecard</a>` :
                                 `<button class="btn-contest" disabled>No Fantasy Available</button>`
                             }
-                            ${!isUpcoming ? `<button class="btn-scorecard" onclick="viewScorecard('${match.id}')">📊</button>` : ''}
+                            ${!isUpcoming ? `<button class="btn-scorecard" onclick="openMatchStats('${match.id}')" title="View Statistics">📊</button>` : ''}
                         </div>
                     </div>
                 </div>
