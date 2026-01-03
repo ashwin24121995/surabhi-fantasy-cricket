@@ -175,9 +175,9 @@
                 const response = await fetch(`/api/cricket/squad/${matchId}`);
                 const data = await response.json();
                 
-                if (data.success && data.data) {
-                    matchData = data.data;
-                    processPlayers(data.data);
+                if (data.success && data.squads) {
+                    matchData = data.squads;
+                    processPlayers(data.squads);
                     renderPage();
                 } else {
                     showError('Squad not available', 'The squad for this match is not available yet. Please try again closer to the match time.');
