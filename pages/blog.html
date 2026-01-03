@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Primary Meta Tags -->
+    <title>Blog - Surabhi | Cricket Insights & Fantasy Tips</title>
+    <meta name="title" content="Blog - Surabhi | Cricket Insights & Fantasy Tips">
+    <meta name="description" content="Read the latest cricket insights, fantasy cricket tips, player analysis, and match predictions on Surabhi blog. Improve your fantasy cricket strategy.">
+    <meta name="keywords" content="cricket blog, fantasy cricket tips, cricket analysis, player statistics, match predictions, cricket strategy">
+    <meta name="author" content="SDSURABHI INFRA PRIVATE LIMITED">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="English">
+    <meta name="revisit-after" content="3 days">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://surabhi.com/blog">
+    <meta property="og:title" content="Blog - Surabhi | Cricket Insights & Fantasy Tips">
+    <meta property="og:description" content="Read the latest cricket insights, fantasy cricket tips, player analysis, and match predictions.">
+    <meta property="og:image" content="../assets/images/logo_v2.webp">
+    <meta property="og:site_name" content="Surabhi">
+    <meta property="og:locale" content="en_IN">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://surabhi.com/blog">
+    <meta name="twitter:title" content="Blog - Surabhi | Cricket Insights & Fantasy Tips">
+    <meta name="twitter:description" content="Read the latest cricket insights, fantasy cricket tips, player analysis, and match predictions.">
+    <meta name="twitter:image" content="../assets/images/logo_v2.webp">
+    
+    <!-- Additional Meta Tags -->
+    <meta name="theme-color" content="#16a34a">
+    <meta name="msapplication-TileColor" content="#16a34a">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="format-detection" content="telephone=no">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://surabhi.com/blog">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="../assets/icons/favicon_v2.png">
+    <link rel="apple-touch-icon" href="../assets/icons/favicon_v2.png">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="../css/style.css">
+    
+    <style>
+        /* Blog Specific Styles */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+        
+        .blog-card {
+            background: var(--bg-white);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .blog-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .blog-card-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .blog-card-content {
+            padding: 1.5rem;
+        }
+        
+        .blog-card-meta {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 0.75rem;
+            font-size: 0.875rem;
+            color: var(--text-muted);
+        }
+        
+        .blog-category {
+            background: rgba(22, 163, 74, 0.1);
+            color: var(--primary-green);
+            padding: 0.25rem 0.75rem;
+            border-radius: var(--radius-full);
+            font-weight: 500;
+        }
+        
+        .blog-card h3 {
+            margin-bottom: 0.75rem;
+            font-size: 1.25rem;
+            line-height: 1.4;
+        }
+        
+        .blog-card h3 a {
+            color: var(--text-dark);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .blog-card h3 a:hover {
+            color: var(--primary-green);
+        }
+        
+        .blog-card p {
+            color: var(--text-light);
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+        
+        .blog-card-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .read-more {
+            color: var(--primary-green);
+            font-weight: 600;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: gap 0.3s ease;
+        }
+        
+        .read-more:hover {
+            gap: 0.75rem;
+        }
+        
+        .blog-featured {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        @media (max-width: 768px) {
+            .blog-featured {
+                grid-template-columns: 1fr;
+            }
+            
+            .blog-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .blog-featured-card {
+            background: var(--bg-white);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+        }
+        
+        .blog-featured-card img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+        
+        .blog-featured-content {
+            padding: 2rem;
+        }
+        
+        .blog-featured-badge {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background: var(--primary-green);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: var(--radius-full);
+            font-weight: 600;
+            font-size: 0.875rem;
+        }
+        
+        .blog-categories {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+        
+        .category-filter {
+            padding: 0.5rem 1.25rem;
+            background: var(--bg-light);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-full);
+            color: var(--text-dark);
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .category-filter:hover,
+        .category-filter.active {
+            background: var(--primary-green);
+            color: white;
+            border-color: var(--primary-green);
+        }
+        
+        .coming-soon-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        
+        .newsletter-box {
+            background: linear-gradient(135deg, var(--primary-green) 0%, var(--primary-dark) 100%);
+            border-radius: var(--radius-lg);
+            padding: 3rem;
+            text-align: center;
+            color: white;
+            margin-top: 3rem;
+        }
+        
+        .newsletter-box h3 {
+            margin-bottom: 1rem;
+        }
+        
+        .newsletter-box p {
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
+        }
+        
+        .newsletter-form {
+            display: flex;
+            flex-direction: row;
+            gap: 1rem;
+            max-width: 500px;
+            margin: 0 auto;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .newsletter-form input {
+            flex: 1;
+            min-width: 0;
+            padding: 1rem 1.5rem;
+            border: none;
+            border-radius: var(--radius-full);
+            font-size: 1rem;
+            background: white;
+            color: var(--text-dark);
+        }
+        
+        .newsletter-form input::placeholder {
+            color: var(--text-muted);
+        }
+        
+        .newsletter-form button {
+            padding: 1rem 2rem;
+            background: white;
+            color: var(--primary-green);
+            border: none;
+            border-radius: var(--radius-full);
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            white-space: nowrap;
+        }
+        
+        .newsletter-form button:hover {
+            transform: scale(1.05);
+        }
+        
+        @media (max-width: 576px) {
+            .newsletter-form {
+                flex-direction: column;
+            }
+            
+            .newsletter-form input,
+            .newsletter-form button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <a href="../index.html" class="logo">
+                <img src="../assets/images/logo_v2.webp" alt="Surabhi Logo">
+            </a>
+            
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="matches.html">Matches</a></li>
+                    <li><a href="how-to-play.html">How to Play</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            
+            <div class="nav-buttons">
+                <a href="login.html" class="btn btn-secondary btn-sm">Login</a>
+                <a href="register.html" class="btn btn-primary btn-sm">Register</a>
+            </div>
+            
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div class="mobile-menu">
+            <ul>
+                <li><a href="matches.html">Matches</a></li>
+                <li><a href="how-to-play.html">How to Play</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="mobile-menu-buttons">
+                <a href="login.html" class="btn btn-secondary btn-sm">Login</a>
+                <a href="register.html" class="btn btn-primary btn-sm">Register</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+        <div class="container">
+            <span class="section-badge" style="color: white; background: rgba(255,255,255,0.2);">📰 Cricket Insights</span>
+            <h1>Surabhi Blog</h1>
+            <p>Cricket analysis, fantasy tips, player insights, and strategic guides to help you master fantasy cricket.</p>
+        </div>
+    </section>
+
+    <!-- Blog Content -->
+    <section class="section">
+        <div class="container">
+            <!-- Category Filters -->
+            <div class="blog-categories">
+                <button class="category-filter active">All Posts</button>
+                <button class="category-filter">Fantasy Tips</button>
+                <button class="category-filter">Player Analysis</button>
+                <button class="category-filter">Match Previews</button>
+                <button class="category-filter">Strategy Guides</button>
+                <button class="category-filter">Cricket News</button>
+            </div>
+            
+            <!-- Coming Soon Notice -->
+            <div style="text-align: center; padding: 4rem 2rem; background: var(--bg-light); border-radius: var(--radius-lg); margin-bottom: 3rem;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--primary-green); margin-bottom: 1.5rem;"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                <h2 style="margin-bottom: 1rem; color: var(--text-dark);">Blog Coming Soon</h2>
+                <p style="color: var(--text-light); max-width: 600px; margin: 0 auto 1.5rem;">We're working hard to bring you valuable cricket insights, fantasy tips, and strategic guides. Our blog will feature expert analysis, player statistics, and match predictions to help you improve your fantasy cricket skills.</p>
+                <p style="color: var(--text-muted); font-size: 0.875rem;">Stay tuned for updates!</p>
+            </div>
+            
+            <!-- What to Expect -->
+            <div class="section-header">
+                <span class="section-badge">📝 What to Expect</span>
+                <h2 class="section-title">Upcoming Content</h2>
+                <p class="section-subtitle">Here's a preview of the content we'll be publishing on our blog.</p>
+            </div>
+            
+            <div class="grid grid-3">
+                <div class="card">
+                    <div class="card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg>
+                    </div>
+                    <h3>Player Analysis</h3>
+                    <p>In-depth analysis of cricket players including their recent form, historical statistics, performance in different conditions, and fantasy value assessment.</p>
+                </div>
+                
+                <div class="card">
+                    <div class="card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    </div>
+                    <h3>Fantasy Tips</h3>
+                    <p>Expert tips and strategies for building winning fantasy teams. Learn how to select the right players, choose captains, and maximize your points.</p>
+                </div>
+                
+                <div class="card">
+                    <div class="card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    </div>
+                    <h3>Match Previews</h3>
+                    <p>Comprehensive match previews with pitch analysis, weather conditions, head-to-head records, and key players to watch for upcoming matches.</p>
+                </div>
+                
+                <div class="card">
+                    <div class="card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+                    </div>
+                    <h3>Strategy Guides</h3>
+                    <p>Detailed guides on fantasy cricket strategies including team composition, risk management, differential picks, and advanced tactics.</p>
+                </div>
+                
+                <div class="card">
+                    <div class="card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                    </div>
+                    <h3>Pitch Reports</h3>
+                    <p>Venue-specific pitch analysis including historical data, expected behavior, and how different pitches affect player selection.</p>
+                </div>
+                
+                <div class="card">
+                    <div class="card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                    </div>
+                    <h3>Team News</h3>
+                    <p>Latest updates on team compositions, injury news, player availability, and last-minute changes that affect fantasy selections.</p>
+                </div>
+            </div>
+            
+            <!-- Newsletter -->
+            <div class="newsletter-box">
+                <h3>Subscribe to Our Newsletter</h3>
+                <p>Be the first to know when we publish new content. Get cricket insights and fantasy tips delivered directly to your inbox.</p>
+                <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Thank you for subscribing! We will notify you when our blog launches.');">
+                    <input type="email" placeholder="Enter your email address" required>
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <img src="../assets/images/logo_v2.webp" alt="Surabhi Logo">
+                    <p>A free-to-play fantasy cricket platform focused on education and entertainment. No real money involved.</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="how-to-play.html">How to Play</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="terms.html">Terms & Conditions</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="fair-play.html">Fair Play Policy</a></li>
+                        <li><a href="responsible-gaming.html">Responsible Gaming</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li>Ram Acchayvar 48/2</li>
+                        <li>Ayodhya Puri 2, Bijnour</li>
+                        <li>Sarojini Nagar, Lucknow</li>
+                        <li>Uttar Pradesh 226008</li>
+                        <li><a href="mailto:support@skillarenasports.com">support@skillarenasports.com</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Footer Disclaimer -->
+            <div class="footer-disclaimer">
+                <div class="disclaimer-content">
+                    <span class="disclaimer-badge">🔞 18+ ONLY</span>
+                    <span class="disclaimer-badge">🚫 NO REAL MONEY</span>
+                    <span class="disclaimer-badge">🎮 ENTERTAINMENT ONLY</span>
+                    <span class="disclaimer-badge">📍 STATE RESTRICTIONS APPLY</span>
+                </div>
+                <p class="disclaimer-text">
+                    FREE-TO-PLAY fantasy cricket platform operated by SDSURABHI INFRA PRIVATE LIMITED (CIN: U41002UP2023PTC194590), designed purely for entertainment and educational purposes. No real money is involved, and no prizes or winnings are awarded. Users must be 18 years or older. Users from Andhra Pradesh, Assam, Nagaland, Odisha, Sikkim, and Telangana are not permitted to participate due to government compliance requirements.
+                </p>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 Surabhi. All rights reserved. Operated by SDSURABHI INFRA PRIVATE LIMITED</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <button class="scroll-to-top" aria-label="Scroll to top">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+    </button>
+
+    <!-- Cookie Banner -->
+    <div class="cookie-banner">
+        <div class="cookie-content">
+            <div class="cookie-text">
+                <h4>🍪 We Use Cookies</h4>
+                <p>We use cookies to improve your experience and analyze site traffic. By clicking "Accept", you consent to our use of cookies. Read our <a href="privacy.html">Privacy Policy</a> for more details.</p>
+            </div>
+            <div class="cookie-buttons">
+                <button class="btn btn-secondary btn-sm cookie-decline">Decline</button>
+                <button class="btn btn-primary btn-sm cookie-accept">Accept Cookies</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../js/main.js"></script>
+</body>
+</html>

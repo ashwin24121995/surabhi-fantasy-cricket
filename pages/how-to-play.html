@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Primary Meta Tags -->
+    <title>How to Play - Surabhi | Free Fantasy Cricket Guide</title>
+    <meta name="title" content="How to Play - Surabhi | Free Fantasy Cricket Guide">
+    <meta name="description" content="Learn how to play fantasy cricket on Surabhi. Step-by-step guide to creating teams, understanding scoring, and competing on leaderboards. 100% free, no real money involved.">
+    <meta name="keywords" content="how to play fantasy cricket, fantasy cricket guide, Surabhi tutorial, cricket team selection, fantasy sports rules, free fantasy cricket">
+    <meta name="author" content="SDSURABHI INFRA PRIVATE LIMITED">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="English">
+    <meta name="revisit-after" content="7 days">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://surabhi.com/how-to-play">
+    <meta property="og:title" content="How to Play - Surabhi | Free Fantasy Cricket Guide">
+    <meta property="og:description" content="Learn how to play fantasy cricket on Surabhi. Step-by-step guide to creating teams, understanding scoring, and competing on leaderboards.">
+    <meta property="og:image" content="../assets/images/logo_v2.webp">
+    <meta property="og:site_name" content="Surabhi">
+    <meta property="og:locale" content="en_IN">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://surabhi.com/how-to-play">
+    <meta name="twitter:title" content="How to Play - Surabhi | Free Fantasy Cricket Guide">
+    <meta name="twitter:description" content="Learn how to play fantasy cricket on Surabhi. Step-by-step guide to creating teams, understanding scoring, and competing on leaderboards.">
+    <meta name="twitter:image" content="../assets/images/logo_v2.webp">
+    
+    <!-- Additional Meta Tags -->
+    <meta name="theme-color" content="#16a34a">
+    <meta name="msapplication-TileColor" content="#16a34a">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="format-detection" content="telephone=no">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://surabhi.com/how-to-play">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="../assets/icons/favicon_v2.png">
+    <link rel="apple-touch-icon" href="../assets/icons/favicon_v2.png">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="../css/style.css">
+    
+    <style>
+        /* How to Play Specific Styles */
+        .step-card {
+            background: var(--bg-white);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            box-shadow: var(--shadow-md);
+            position: relative;
+            border-left: 4px solid var(--primary-green);
+        }
+        
+        .step-number {
+            position: absolute;
+            top: -15px;
+            left: 20px;
+            width: 40px;
+            height: 40px;
+            background: var(--primary-green);
+            color: var(--text-white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.25rem;
+        }
+        
+        .step-card h3 {
+            margin-top: 0.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-green);
+        }
+        
+        .scoring-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            background: var(--bg-white);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+        }
+        
+        .scoring-table th,
+        .scoring-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border-light);
+        }
+        
+        .scoring-table th {
+            background: var(--primary-green);
+            color: var(--text-white);
+            font-weight: 600;
+        }
+        
+        .scoring-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .scoring-table tr:hover {
+            background: var(--bg-light);
+        }
+        
+        .points-positive {
+            color: var(--primary-green);
+            font-weight: 600;
+        }
+        
+        .points-negative {
+            color: #dc2626;
+            font-weight: 600;
+        }
+        
+        .tip-box {
+            background: rgba(22, 163, 74, 0.1);
+            border-left: 4px solid var(--primary-green);
+            padding: 1.5rem;
+            border-radius: 0 var(--radius-md) var(--radius-md) 0;
+            margin: 1.5rem 0;
+        }
+        
+        .tip-box h4 {
+            color: var(--primary-green);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .role-badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: var(--radius-full);
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+        
+        .role-wk { background: #fef3c7; color: #92400e; }
+        .role-bat { background: #dbeafe; color: #1e40af; }
+        .role-ar { background: #dcfce7; color: #166534; }
+        .role-bowl { background: #fce7f3; color: #9d174d; }
+        
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--primary-green);
+        }
+        
+        .timeline-item {
+            position: relative;
+            padding-bottom: 2rem;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2rem;
+            top: 0.5rem;
+            width: 12px;
+            height: 12px;
+            background: var(--primary-green);
+            border-radius: 50%;
+            transform: translateX(-5px);
+        }
+        
+        .timeline-item:last-child {
+            padding-bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <a href="../index.html" class="logo">
+                <img src="../assets/images/logo_v2.webp" alt="Surabhi Logo">
+            </a>
+            
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="matches.html">Matches</a></li>
+                    <li><a href="how-to-play.html" class="active">How to Play</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            
+            <div class="nav-buttons">
+                <a href="login.html" class="btn btn-secondary btn-sm">Login</a>
+                <a href="register.html" class="btn btn-primary btn-sm">Register</a>
+            </div>
+            
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div class="mobile-menu">
+            <ul>
+                <li><a href="matches.html">Matches</a></li>
+                <li><a href="how-to-play.html" class="active">How to Play</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="mobile-menu-buttons">
+                <a href="login.html" class="btn btn-secondary btn-sm">Login</a>
+                <a href="register.html" class="btn btn-primary btn-sm">Register</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+        <div class="container">
+            <span class="section-badge" style="color: white; background: rgba(255,255,255,0.2);">📚 Learn the Game</span>
+            <h1>How to Play Fantasy Cricket</h1>
+            <p>Master the art of fantasy cricket with our comprehensive guide. Build winning teams, understand scoring, and climb the leaderboards.</p>
+        </div>
+    </section>
+
+    <!-- Introduction -->
+    <section class="section">
+        <div class="container">
+            <div class="about-intro">
+                <div class="about-intro-content">
+                    <h2>What is Fantasy Cricket?</h2>
+                    <p>Fantasy cricket is a strategic game where you become the team manager. You select real cricket players to form your virtual team, and based on their actual performance in real matches, your team earns points. The better your players perform on the field, the higher your team scores on the leaderboard.</p>
+                    <p>On Surabhi, fantasy cricket is <strong>completely free to play</strong>. There are no entry fees, no deposits, and no real money involved. You compete purely for leaderboard rankings, bragging rights, and the satisfaction of outsmarting fellow cricket enthusiasts with your strategic skills.</p>
+                    <p>Whether you're a cricket expert or just starting your journey, Surabhi provides an educational platform to test your cricket knowledge, learn player analytics, and develop strategic thinking—all without any financial risk.</p>
+                </div>
+                <div class="about-intro-image">
+                    <img src="../assets/images/hero-batsman.webp" alt="Cricket Batsman" class="responsive-img">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Step by Step Guide -->
+    <section class="section bg-light">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">🎯 Step-by-Step Guide</span>
+                <h2 class="section-title">How to Create Your Fantasy Team</h2>
+                <p class="section-subtitle">Follow these simple steps to start your fantasy cricket journey on Surabhi.</p>
+            </div>
+            
+            <div class="grid grid-2" style="gap: 2rem;">
+                <div class="step-card">
+                    <span class="step-number">1</span>
+                    <h3>Create Your Free Account</h3>
+                    <p>Register on Surabhi using your email address or mobile number. The registration process is quick, simple, and completely free. You'll need to verify your age (18+ only) and confirm that you're not from a restricted state.</p>
+                    <p><strong>Required Information:</strong></p>
+                    <ul style="margin-left: 1.5rem; color: var(--text-light);">
+                        <li>Full Name</li>
+                        <li>Email Address</li>
+                        <li>Mobile Number</li>
+                        <li>Date of Birth (for age verification)</li>
+                        <li>State of Residence</li>
+                    </ul>
+                </div>
+                
+                <div class="step-card">
+                    <span class="step-number">2</span>
+                    <h3>Select a Match</h3>
+                    <p>Browse the upcoming matches section to find cricket matches you want to participate in. We cover major cricket tournaments and series including international matches, domestic leagues, and premier tournaments.</p>
+                    <p>Each match card displays:</p>
+                    <ul style="margin-left: 1.5rem; color: var(--text-light);">
+                        <li>Teams playing</li>
+                        <li>Match date and time</li>
+                        <li>Tournament name</li>
+                        <li>Contest deadline</li>
+                    </ul>
+                </div>
+                
+                <div class="step-card">
+                    <span class="step-number">3</span>
+                    <h3>Build Your Dream Team</h3>
+                    <p>Select 11 players from both teams to form your fantasy squad. You must follow the team composition rules to ensure a balanced team:</p>
+                    <p><strong>Team Composition Rules:</strong></p>
+                    <ul style="margin-left: 1.5rem; color: var(--text-light);">
+                        <li><span class="role-badge role-wk">WK</span> Wicket-keepers: 1-4 players</li>
+                        <li><span class="role-badge role-bat">BAT</span> Batsmen: 3-6 players</li>
+                        <li><span class="role-badge role-ar">AR</span> All-rounders: 1-4 players</li>
+                        <li><span class="role-badge role-bowl">BOWL</span> Bowlers: 3-6 players</li>
+                        <li>Maximum 7 players from one team</li>
+                    </ul>
+                </div>
+                
+                <div class="step-card">
+                    <span class="step-number">4</span>
+                    <h3>Choose Captain & Vice-Captain</h3>
+                    <p>This is the most crucial decision in fantasy cricket. Your Captain earns <strong>2x points</strong> and your Vice-Captain earns <strong>1.5x points</strong> based on their actual performance.</p>
+                    <p><strong>Selection Tips:</strong></p>
+                    <ul style="margin-left: 1.5rem; color: var(--text-light);">
+                        <li>Choose consistent performers as Captain</li>
+                        <li>Consider pitch conditions and player form</li>
+                        <li>All-rounders often make good Captain choices</li>
+                        <li>Research head-to-head statistics</li>
+                    </ul>
+                </div>
+                
+                <div class="step-card">
+                    <span class="step-number">5</span>
+                    <h3>Join a Contest</h3>
+                    <p>Once your team is ready, join a contest for that match. All contests on Surabhi are <strong>free to join</strong>—there are no entry fees or hidden charges. Simply select a contest and confirm your participation.</p>
+                    <p><strong>Contest Types:</strong></p>
+                    <ul style="margin-left: 1.5rem; color: var(--text-light);">
+                        <li>Practice Contests - Learn without pressure</li>
+                        <li>Public Leaderboards - Compete with everyone</li>
+                        <li>Private Contests - Challenge your friends</li>
+                    </ul>
+                </div>
+                
+                <div class="step-card">
+                    <span class="step-number">6</span>
+                    <h3>Track Your Performance</h3>
+                    <p>Once the match begins, watch your team's points accumulate in real-time. Track your leaderboard position and see how your strategic choices compare against other participants.</p>
+                    <p><strong>After the Match:</strong></p>
+                    <ul style="margin-left: 1.5rem; color: var(--text-light);">
+                        <li>View final leaderboard standings</li>
+                        <li>Analyze your team's performance</li>
+                        <li>Learn from top performers' strategies</li>
+                        <li>Improve for the next match</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scoring System -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">📊 Points System</span>
+                <h2 class="section-title">Fantasy Cricket Scoring</h2>
+                <p class="section-subtitle">Understand how points are calculated based on player performance in real matches.</p>
+            </div>
+            
+            <!-- Batting Points -->
+            <h3 style="margin-bottom: 1rem;">Batting Points</h3>
+            <table class="scoring-table">
+                <thead>
+                    <tr>
+                        <th>Action</th>
+                        <th>T20 Matches</th>
+                        <th>ODI Matches</th>
+                        <th>Test Matches</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Run Scored</td>
+                        <td class="points-positive">+1 point</td>
+                        <td class="points-positive">+1 point</td>
+                        <td class="points-positive">+1 point</td>
+                    </tr>
+                    <tr>
+                        <td>Boundary (4 runs)</td>
+                        <td class="points-positive">+1 point</td>
+                        <td class="points-positive">+1 point</td>
+                        <td class="points-positive">+1 point</td>
+                    </tr>
+                    <tr>
+                        <td>Six (6 runs)</td>
+                        <td class="points-positive">+2 points</td>
+                        <td class="points-positive">+2 points</td>
+                        <td class="points-positive">+2 points</td>
+                    </tr>
+                    <tr>
+                        <td>Half Century (50 runs)</td>
+                        <td class="points-positive">+8 points</td>
+                        <td class="points-positive">+4 points</td>
+                        <td class="points-positive">+4 points</td>
+                    </tr>
+                    <tr>
+                        <td>Century (100 runs)</td>
+                        <td class="points-positive">+16 points</td>
+                        <td class="points-positive">+8 points</td>
+                        <td class="points-positive">+8 points</td>
+                    </tr>
+                    <tr>
+                        <td>Duck (0 runs, dismissed)</td>
+                        <td class="points-negative">-2 points</td>
+                        <td class="points-negative">-3 points</td>
+                        <td class="points-negative">-4 points</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <!-- Bowling Points -->
+            <h3 style="margin: 2rem 0 1rem;">Bowling Points</h3>
+            <table class="scoring-table">
+                <thead>
+                    <tr>
+                        <th>Action</th>
+                        <th>T20 Matches</th>
+                        <th>ODI Matches</th>
+                        <th>Test Matches</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Wicket Taken</td>
+                        <td class="points-positive">+25 points</td>
+                        <td class="points-positive">+25 points</td>
+                        <td class="points-positive">+16 points</td>
+                    </tr>
+                    <tr>
+                        <td>Bonus (LBW/Bowled)</td>
+                        <td class="points-positive">+8 points</td>
+                        <td class="points-positive">+8 points</td>
+                        <td class="points-positive">+8 points</td>
+                    </tr>
+                    <tr>
+                        <td>3 Wicket Haul</td>
+                        <td class="points-positive">+4 points</td>
+                        <td class="points-positive">+4 points</td>
+                        <td class="points-positive">+4 points</td>
+                    </tr>
+                    <tr>
+                        <td>4 Wicket Haul</td>
+                        <td class="points-positive">+8 points</td>
+                        <td class="points-positive">+8 points</td>
+                        <td class="points-positive">+8 points</td>
+                    </tr>
+                    <tr>
+                        <td>5 Wicket Haul</td>
+                        <td class="points-positive">+16 points</td>
+                        <td class="points-positive">+16 points</td>
+                        <td class="points-positive">+16 points</td>
+                    </tr>
+                    <tr>
+                        <td>Maiden Over</td>
+                        <td class="points-positive">+12 points</td>
+                        <td class="points-positive">+4 points</td>
+                        <td class="points-positive">+4 points</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <!-- Fielding Points -->
+            <h3 style="margin: 2rem 0 1rem;">Fielding Points</h3>
+            <table class="scoring-table">
+                <thead>
+                    <tr>
+                        <th>Action</th>
+                        <th>All Formats</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Catch Taken</td>
+                        <td class="points-positive">+8 points</td>
+                    </tr>
+                    <tr>
+                        <td>Stumping</td>
+                        <td class="points-positive">+12 points</td>
+                    </tr>
+                    <tr>
+                        <td>Run Out (Direct Hit)</td>
+                        <td class="points-positive">+12 points</td>
+                    </tr>
+                    <tr>
+                        <td>Run Out (Indirect)</td>
+                        <td class="points-positive">+6 points</td>
+                    </tr>
+                    <tr>
+                        <td>3 Catches in Match</td>
+                        <td class="points-positive">+4 points (bonus)</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="tip-box">
+                <h4>💡 Pro Tip: Captain & Vice-Captain Multipliers</h4>
+                <p>Your <strong>Captain</strong> earns <strong>2x points</strong> for all their actions, while your <strong>Vice-Captain</strong> earns <strong>1.5x points</strong>. Choose wisely—this decision can make or break your leaderboard position!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Selection Tips -->
+    <section class="section bg-light">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">🏆 Expert Tips</span>
+                <h2 class="section-title">Team Selection Strategies</h2>
+                <p class="section-subtitle">Improve your fantasy cricket skills with these expert strategies.</p>
+            </div>
+            
+            <div class="grid grid-3">
+                <div class="card">
+                    <div class="card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                    </div>
+                    <h3>Research Player Form</h3>
+                    <p>Always check recent performance statistics before selecting players. A player in good form is more likely to score well. Look at their last 5-10 matches, especially in similar conditions.</p>
+                </div>
+                
+                <div class="card">
+                    <div class="card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                    </div>
+                    <h3>Analyze Pitch Conditions</h3>
+                    <p>Different pitches favor different players. Spin-friendly pitches benefit spinners and batsmen who play spin well. Fast, bouncy pitches favor pace bowlers and aggressive batsmen.</p>
+                </div>
+                
+                <div class="card">
+                    <div class="card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                    </div>
+                    <h3>Head-to-Head Records</h3>
+                    <p>Some players perform exceptionally well against specific opponents. Check head-to-head statistics to identify players who historically dominate against the opposition team.</p>
+                </div>
+                
+                <div class="card">
+                    <div class="card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    </div>
+                    <h3>Venue Statistics</h3>
+                    <p>Players often perform differently at different venues. Some batsmen have favorite grounds where they consistently score big, while some bowlers excel at specific venues.</p>
+                </div>
+                
+                <div class="card">
+                    <div class="card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    </div>
+                    <h3>Toss Impact</h3>
+                    <p>The toss can significantly impact player selection. If a team bats first, their batsmen might score more. If they bowl first, their bowlers might get more wickets on a fresh pitch.</p>
+                </div>
+                
+                <div class="card">
+                    <div class="card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    </div>
+                    <h3>All-Rounder Value</h3>
+                    <p>All-rounders can earn points from both batting and bowling, making them valuable picks. Consider making consistent all-rounders your Captain or Vice-Captain for maximum points.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Important Rules -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">📋 Important Rules</span>
+                <h2 class="section-title">Contest Rules & Guidelines</h2>
+                <p class="section-subtitle">Ensure fair play by understanding these important rules.</p>
+            </div>
+            
+            <div class="grid grid-2">
+                <div class="info-card">
+                    <h3>Team Editing</h3>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <h4>Before Deadline</h4>
+                            <p>You can edit your team unlimited times before the contest deadline. Make changes based on toss results, playing XI announcements, and last-minute news.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h4>After Deadline</h4>
+                            <p>Once the contest deadline passes (usually at match start), your team is locked. No further changes can be made.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h4>Player Substitutions</h4>
+                            <p>If a player in your team doesn't play in the actual match, they will score 0 points. There are no automatic substitutions.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="info-card">
+                    <h3>Fair Play Guidelines</h3>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <h4>One Account Policy</h4>
+                            <p>Each user is allowed only one account. Multiple accounts are strictly prohibited and will result in permanent ban.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h4>No Collusion</h4>
+                            <p>Coordinating with other users to gain unfair advantages is prohibited. Play independently and fairly.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h4>Accurate Information</h4>
+                            <p>Provide accurate personal information during registration. False information may result in account suspension.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section mission-vision">
+        <div class="container text-center">
+            <h2 style="color: white;">Ready to Start Playing?</h2>
+            <p style="color: rgba(255,255,255,0.9); max-width: 600px; margin: 0 auto 2rem;">Now that you understand how fantasy cricket works, it's time to put your knowledge to the test. Create your free account and join the competition today!</p>
+            <div class="hero-buttons" style="justify-content: center;">
+                <a href="register.html" class="btn btn-white btn-lg">Create Free Account</a>
+                <a href="faq.html" class="btn btn-secondary btn-lg" style="border-color: white; color: white;">View FAQ</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <img src="../assets/images/logo_v2.webp" alt="Surabhi Logo">
+                    <p>A free-to-play fantasy cricket platform focused on education and entertainment. No real money involved.</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="how-to-play.html">How to Play</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="terms.html">Terms & Conditions</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="fair-play.html">Fair Play Policy</a></li>
+                        <li><a href="responsible-gaming.html">Responsible Gaming</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li>Ram Acchayvar 48/2</li>
+                        <li>Ayodhya Puri 2, Bijnour</li>
+                        <li>Sarojini Nagar, Lucknow</li>
+                        <li>Uttar Pradesh 226008</li>
+                        <li><a href="mailto:support@skillarenasports.com">support@skillarenasports.com</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Footer Disclaimer -->
+            <div class="footer-disclaimer">
+                <div class="disclaimer-content">
+                    <span class="disclaimer-badge">🔞 18+ ONLY</span>
+                    <span class="disclaimer-badge">🚫 NO REAL MONEY</span>
+                    <span class="disclaimer-badge">🎮 ENTERTAINMENT ONLY</span>
+                    <span class="disclaimer-badge">📍 STATE RESTRICTIONS APPLY</span>
+                </div>
+                <p class="disclaimer-text">
+                    FREE-TO-PLAY fantasy cricket platform operated by SDSURABHI INFRA PRIVATE LIMITED (CIN: U41002UP2023PTC194590), designed purely for entertainment and educational purposes. No real money is involved, and no prizes or winnings are awarded. Users must be 18 years or older. Users from Andhra Pradesh, Assam, Nagaland, Odisha, Sikkim, and Telangana are not permitted to participate due to government compliance requirements.
+                </p>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 Surabhi. All rights reserved. Operated by SDSURABHI INFRA PRIVATE LIMITED</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <button class="scroll-to-top" aria-label="Scroll to top">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+    </button>
+
+    <!-- Cookie Banner -->
+    <div class="cookie-banner">
+        <div class="cookie-content">
+            <div class="cookie-text">
+                <h4>🍪 We Use Cookies</h4>
+                <p>We use cookies to improve your experience and analyze site traffic. By clicking "Accept", you consent to our use of cookies. Read our <a href="privacy.html">Privacy Policy</a> for more details.</p>
+            </div>
+            <div class="cookie-buttons">
+                <button class="btn btn-secondary btn-sm cookie-decline">Decline</button>
+                <button class="btn btn-primary btn-sm cookie-accept">Accept Cookies</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../js/main.js"></script>
+</body>
+</html>
