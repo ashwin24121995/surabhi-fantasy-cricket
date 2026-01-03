@@ -561,7 +561,7 @@ app.get('/api/cricket/scorecard/:matchId', async (req, res) => {
         
         res.json({
             success: true,
-            scorecard: data.data
+            data: data.data
         });
         
     } catch (error) {
