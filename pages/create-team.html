@@ -125,9 +125,9 @@
                 <a href="how-to-play.html" class="nav-link">How to Play</a>
                 <a href="about.html" class="nav-link">About</a>
             </div>
-            <div class="nav-actions">
-                <a href="login.html" class="btn-login">Login</a>
-                <a href="register.html" class="btn-register">Register</a>
+            <div class="nav-actions" id="navActions">
+                <a href="login.html" class="btn-login" id="loginBtn">Login</a>
+                <a href="register.html" class="btn-register" id="registerBtn">Register</a>
             </div>
             <button class="nav-toggle" id="navToggle"><span></span><span></span><span></span></button>
         </div>
@@ -165,19 +165,14 @@
         const MAX_ROLES = { wk: 4, bat: 6, ar: 4, bowl: 6 };
         
         // Check if user is logged in
-        async function checkAuth() {
-            try {
-                const response = await fetch('/api/auth/me');
-                const data = await response.json();
-                return data.user ? true : false;
-            } catch (error) {
-                return false;
-            }
+        function checkAuth() {
+            const user = localStorage.getItem('user');
+            return user ? true : false;
         }
         
         // Initialize page
         async function init() {
-            const isLoggedIn = await checkAuth();
+            const isLoggedIn = checkAuth();
             
             if (!isLoggedIn) {
                 // Store the current URL for redirect after login
@@ -532,6 +527,22 @@
                 </div>
             `;
         }
+        
+        // Update navbar based on login status
+        function updateNavbar() {
+            const user = localStorage.getItem('user');
+            const navActions = document.getElementById('navActions');
+            
+            if (user && navActions) {
+                navActions.innerHTML = `
+                    <a href="dashboard.html" class="btn-login">Dashboard</a>
+                    <a href="dashboard.html" class="btn-register">My Teams</a>
+                `;
+            }
+        }
+        
+        // Update navbar on page load
+        updateNavbar();
     </script>
 </body>
 </html>
