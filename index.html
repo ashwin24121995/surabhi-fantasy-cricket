@@ -1396,8 +1396,8 @@
                 India's premier FREE-TO-PLAY fantasy cricket platform. Create your dream team, compete on leaderboards, and enjoy cricket like never before. Zero deposits, zero fees – just pure entertainment.
             </p>
             
-            <div class="hero-buttons">
-                <a href="pages/register.html" class="btn btn-hero primary">Start Playing Free</a>
+            <div class="hero-buttons" id="heroButtons">
+                <a href="pages/register.html" class="btn btn-hero primary" id="heroStartBtn">Start Playing Free</a>
                 <a href="pages/how-to-play.html" class="btn btn-hero secondary">How It Works →</a>
             </div>
             
@@ -1597,8 +1597,8 @@
             <div class="cta-content">
                 <h2>Ready to Start Your Fantasy Cricket Journey?</h2>
                 <p>Join thousands of cricket enthusiasts who are already enjoying free fantasy cricket on Surabhi.</p>
-                <div class="cta-buttons">
-                    <a href="pages/register.html" class="btn btn-primary btn-hero">Create Free Account</a>
+                <div class="cta-buttons" id="ctaButtons">
+                    <a href="pages/register.html" class="btn btn-primary btn-hero" id="ctaStartBtn">Create Free Account</a>
                     <a href="pages/matches.html" class="btn btn-ghost btn-hero">View Matches</a>
                 </div>
             </div>
@@ -1793,14 +1793,29 @@
             const user = localStorage.getItem('user');
             const navButtons = document.getElementById('navButtons');
             const mobileNavButtons = document.getElementById('mobileNavButtons');
+            const heroStartBtn = document.getElementById('heroStartBtn');
+            const ctaStartBtn = document.getElementById('ctaStartBtn');
             
             if (user) {
+                // Update nav buttons
                 const loggedInNav = `
                     <a href="pages/dashboard.html" class="btn btn-ghost">Dashboard</a>
                     <a href="pages/matches.html" class="btn btn-primary">Play Now</a>
                 `;
                 navButtons.innerHTML = loggedInNav;
                 mobileNavButtons.innerHTML = loggedInNav;
+                
+                // Update hero button
+                if (heroStartBtn) {
+                    heroStartBtn.href = 'pages/dashboard.html';
+                    heroStartBtn.textContent = 'Go to Dashboard';
+                }
+                
+                // Update CTA button
+                if (ctaStartBtn) {
+                    ctaStartBtn.href = 'pages/dashboard.html';
+                    ctaStartBtn.textContent = 'Go to Dashboard';
+                }
             }
         }
         
