@@ -339,15 +339,30 @@ app.get('/api/cricket/current-matches', async (req, res) => {
             }));
         }
         
-        // Find upcoming series (starting within next 60 days)
+        // Find ongoing and upcoming series (ending after today, within next 60 days)
         const now = new Date();
         const sixtyDaysLater = new Date(now.getTime() + 60 * 24 * 60 * 60 * 1000);
         
         if (seriesData.status === 'success' && seriesData.data) {
             const upcomingSeries = seriesData.data.filter(s => {
                 const startDate = new Date(s.startDate);
-                return startDate >= now && startDate <= sixtyDaysLater;
-            }).slice(0, 15); // Limit to 15 series to get matches from all countries
+                // Parse end date (format: "Jan 25" or "2026-01-25")
+                let endDateStr = s.endDate || '';
+                let endDate;
+                if (endDateStr.includes('-')) {
+                    endDate = new Date(endDateStr);
+                } else {
+                    // Parse "Jan 25" format - assume same year as start date
+                    const year = startDate.getFullYear();
+                    endDate = new Date(`${endDateStr} ${year}`);
+                    // If end date is before start date, it's next year
+                    if (endDate < startDate) {
+                        endDate = new Date(`${endDateStr} ${year + 1}`);
+                    }
+                }
+                // Include series that: (1) end after today AND (2) start within 60 days OR are ongoing
+                return endDate >= now && startDate <= sixtyDaysLater;
+            }).slice(0, 20); // Limit to 20 series to get matches from all countries
             
             // Fetch matches for each upcoming series
             for (const series of upcomingSeries) {
