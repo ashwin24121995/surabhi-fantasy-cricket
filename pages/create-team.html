@@ -164,11 +164,38 @@
         const MIN_ROLES = { wk: 1, bat: 3, ar: 1, bowl: 3 };
         const MAX_ROLES = { wk: 4, bat: 6, ar: 4, bowl: 6 };
         
-        if (!matchId) {
-            showError('No match selected', 'Please select a match from the matches page.');
-        } else {
-            loadSquad(matchId);
+        // Check if user is logged in
+        async function checkAuth() {
+            try {
+                const response = await fetch('/api/auth/me');
+                const data = await response.json();
+                return data.user ? true : false;
+            } catch (error) {
+                return false;
+            }
         }
+        
+        // Initialize page
+        async function init() {
+            const isLoggedIn = await checkAuth();
+            
+            if (!isLoggedIn) {
+                // Store the current URL for redirect after login
+                sessionStorage.setItem('redirectAfterLogin', window.location.href.split('/').pop());
+                alert('Please login or register to create a team.');
+                window.location.href = 'login.html';
+                return;
+            }
+            
+            if (!matchId) {
+                showError('No match selected', 'Please select a match from the matches page.');
+            } else {
+                loadSquad(matchId);
+            }
+        }
+        
+        // Start initialization
+        init();
         
         async function loadSquad(matchId) {
             try {

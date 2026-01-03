@@ -486,9 +486,15 @@
                     showAlert('Login successful! Redirecting...', 'success');
                     // Store user info in localStorage
                     localStorage.setItem('user', JSON.stringify(data.user));
-                    // Redirect to dashboard
+                    // Check if there's a redirect URL stored (e.g., from Create Team)
+                    const redirectUrl = sessionStorage.getItem('redirectAfterLogin');
                     setTimeout(() => {
-                        window.location.href = 'dashboard.html';
+                        if (redirectUrl) {
+                            sessionStorage.removeItem('redirectAfterLogin');
+                            window.location.href = redirectUrl;
+                        } else {
+                            window.location.href = 'dashboard.html';
+                        }
                     }, 1000);
                 } else {
                     showAlert(data.error || 'Login failed. Please try again.', 'error');
