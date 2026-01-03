@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="View live cricket matches, upcoming fixtures, and join fantasy contests on Surabhi - India's FREE-TO-PLAY fantasy cricket platform.">
+    <meta name="keywords" content="live cricket matches, fantasy cricket, upcoming matches, cricket scores, Surabhi">
+    <meta name="author" content="SDSURABHI INFRA PRIVATE LIMITED">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Live Matches - Surabhi Fantasy Cricket">
+    <meta property="og:description" content="View live cricket matches and join fantasy contests on Surabhi.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://surabhi.com/pages/matches.html">
+    
+    <title>Live Matches - Surabhi Fantasy Cricket</title>
+    
+    <link rel="icon" type="image/png" href="../assets/icons/favicon_v2.png">
+    <link rel="stylesheet" href="../css/theme.css">
+    
+    <style>
+        /* Matches Page Specific Styles */
+        .matches-hero {
+            background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+            padding: 100px 0 60px;
+            text-align: center;
+        }
+        
+        .matches-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .matches-hero p {
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+        }
+        
+        /* Tabs */
+        .match-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            padding: 2rem 0;
+            background: var(--bg-secondary);
+            position: sticky;
+            top: 70px;
+            z-index: 100;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .tab-btn {
+            padding: 12px 30px;
+            background: transparent;
+            border: 2px solid var(--border-color);
+            border-radius: 50px;
+            color: var(--text-secondary);
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .tab-btn:hover {
+            border-color: var(--accent-green);
+            color: var(--accent-green);
+        }
+        
+        .tab-btn.active {
+            background: var(--accent-green);
+            border-color: var(--accent-green);
+            color: var(--bg-primary);
+        }
+        
+        .tab-btn .count {
+            background: rgba(255,255,255,0.2);
+            padding: 2px 8px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+        }
+        
+        .tab-btn.active .count {
+            background: rgba(0,0,0,0.2);
+        }
+        
+        /* Matches Container */
+        .matches-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .matches-section {
+            display: none;
+        }
+        
+        .matches-section.active {
+            display: block;
+        }
+        
+        .section-title {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .section-title .live-dot {
+            width: 10px;
+            height: 10px;
+            background: #ff4444;
+            border-radius: 50%;
+            animation: pulse 1.5s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.2); }
+        }
+        
+        /* Match Cards Grid */
+        .matches-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        /* Match Card */
+        .match-card {
+            background: var(--bg-secondary);
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+        
+        .match-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-green);
+            box-shadow: 0 10px 40px rgba(0, 255, 136, 0.1);
+        }
+        
+        .match-card-header {
+            background: linear-gradient(135deg, rgba(0, 255, 136, 0.1) 0%, transparent 100%);
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .match-series {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            max-width: 200px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        .match-type {
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+        
+        .match-type.t20 { background: #ff6b6b; color: white; }
+        .match-type.odi { background: #4ecdc4; color: white; }
+        .match-type.test { background: #a855f7; color: white; }
+        
+        .match-card-body {
+            padding: 20px;
+        }
+        
+        .teams-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .team {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            flex: 1;
+        }
+        
+        .team-logo {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--bg-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            border: 2px solid var(--border-color);
+        }
+        
+        .team-logo img {
+            width: 45px;
+            height: 45px;
+            object-fit: contain;
+        }
+        
+        .team-name {
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-align: center;
+            max-width: 100px;
+        }
+        
+        .team-score {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--accent-green);
+        }
+        
+        .vs-badge {
+            background: var(--bg-primary);
+            padding: 10px 15px;
+            border-radius: 50%;
+            font-weight: 700;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+        }
+        
+        .match-info {
+            text-align: center;
+            padding: 15px 0;
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 15px;
+        }
+        
+        .match-status {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 5px;
+        }
+        
+        .match-status.live {
+            color: #ff4444;
+            font-weight: 600;
+        }
+        
+        .match-time {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+        
+        .match-venue {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: 5px;
+        }
+        
+        .match-card-footer {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .btn-contest {
+            flex: 1;
+            padding: 12px;
+            background: var(--accent-green);
+            color: var(--bg-primary);
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            text-decoration: none;
+        }
+        
+        .btn-contest:hover {
+            background: var(--accent-green-dark);
+            transform: scale(1.02);
+        }
+        
+        .btn-contest:disabled {
+            background: var(--text-muted);
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .btn-scorecard {
+            padding: 12px 20px;
+            background: transparent;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            color: var(--text-secondary);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-scorecard:hover {
+            border-color: var(--accent-green);
+            color: var(--accent-green);
+        }
+        
+        /* Loading State */
+        .loading-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 60px 20px;
+            gap: 20px;
+        }
+        
+        .loading-spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid var(--border-color);
+            border-top-color: var(--accent-green);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        .loading-text {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+        
+        /* Empty State */
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+        }
+        
+        .empty-state svg {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 20px;
+            opacity: 0.5;
+        }
+        
+        .empty-state h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .empty-state p {
+            color: var(--text-secondary);
+        }
+        
+        /* Fantasy Badge */
+        .fantasy-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 4px 10px;
+            background: rgba(0, 255, 136, 0.1);
+            border: 1px solid var(--accent-green);
+            border-radius: 20px;
+            font-size: 0.75rem;
+            color: var(--accent-green);
+            margin-left: 10px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .matches-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .match-tabs {
+                flex-wrap: wrap;
+                padding: 1rem;
+                gap: 0.5rem;
+            }
+            
+            .tab-btn {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+            
+            .matches-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .matches-container {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-logo">
+                <img src="../assets/images/logo_v2.png" alt="Surabhi Logo">
+                <span>Surabhi</span>
+            </a>
+            <div class="nav-menu" id="navMenu">
+                <a href="../index.html" class="nav-link">Home</a>
+                <a href="matches.html" class="nav-link active">Matches</a>
+                <a href="how-to-play.html" class="nav-link">How to Play</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </div>
+            <div class="nav-actions">
+                <a href="login.html" class="btn-login" id="loginBtn">Login</a>
+                <a href="register.html" class="btn-register" id="registerBtn">Register</a>
+                <a href="dashboard.html" class="btn-dashboard" id="dashboardBtn" style="display: none;">Dashboard</a>
+            </div>
+            <button class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="matches-hero">
+        <div class="container">
+            <h1>🏏 Live Matches</h1>
+            <p>Join fantasy contests for live and upcoming cricket matches</p>
+        </div>
+    </section>
+
+    <!-- Match Tabs -->
+    <div class="match-tabs">
+        <button class="tab-btn active" data-tab="live">
+            <span class="live-dot" style="width: 8px; height: 8px; background: #ff4444; border-radius: 50%; animation: pulse 1.5s infinite;"></span>
+            Live <span class="count" id="liveCount">0</span>
+        </button>
+        <button class="tab-btn" data-tab="upcoming">
+            📅 Upcoming <span class="count" id="upcomingCount">0</span>
+        </button>
+        <button class="tab-btn" data-tab="completed">
+            ✅ Completed <span class="count" id="completedCount">0</span>
+        </button>
+    </div>
+
+    <!-- Matches Container -->
+    <div class="matches-container">
+        <!-- Live Matches -->
+        <div class="matches-section active" id="liveSection">
+            <h2 class="section-title">
+                <span class="live-dot"></span>
+                Live Matches
+            </h2>
+            <div class="matches-grid" id="liveMatches">
+                <div class="loading-container">
+                    <div class="loading-spinner"></div>
+                    <p class="loading-text">Loading live matches...</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Upcoming Matches -->
+        <div class="matches-section" id="upcomingSection">
+            <h2 class="section-title">📅 Upcoming Matches</h2>
+            <div class="matches-grid" id="upcomingMatches">
+                <div class="loading-container">
+                    <div class="loading-spinner"></div>
+                    <p class="loading-text">Loading upcoming matches...</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Completed Matches -->
+        <div class="matches-section" id="completedSection">
+            <h2 class="section-title">✅ Completed Matches</h2>
+            <div class="matches-grid" id="completedMatches">
+                <div class="loading-container">
+                    <div class="loading-spinner"></div>
+                    <p class="loading-text">Loading completed matches...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <img src="../assets/images/logo_v2.png" alt="Surabhi Logo" class="footer-logo">
+                    <p>India's most trusted FREE-TO-PLAY fantasy cricket platform for entertainment and education.</p>
+                    <div class="footer-badges">
+                        <span class="badge">18+</span>
+                        <span class="badge">100% FREE</span>
+                        <span class="badge">NO REAL MONEY</span>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <a href="../index.html">Home</a>
+                    <a href="about.html">About Us</a>
+                    <a href="how-to-play.html">How to Play</a>
+                    <a href="faq.html">FAQ</a>
+                    <a href="blog.html">Blog</a>
+                    <a href="contact.html">Contact Us</a>
+                </div>
+                <div class="footer-links">
+                    <h4>Legal</h4>
+                    <a href="terms.html">Terms & Conditions</a>
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="fair-play.html">Fair Play Policy</a>
+                    <a href="responsible-gaming.html">Responsible Gaming</a>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contact Us</h4>
+                    <p>📍 Ram Acchayvar 48/2, Ayodhya Puri 2<br>Bijnour, Sarojini Nagar<br>Lucknow, UP 226008</p>
+                    <p>📧 support@skillarenasports.com</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 SDSURABHI INFRA PRIVATE LIMITED. All rights reserved.</p>
+                <p class="disclaimer">FREE-TO-PLAY fantasy cricket platform operated by SDSURABHI INFRA PRIVATE LIMITED (CIN: U41002UP2023PTC194590). No real money involved. Users must be 18+. Users from Andhra Pradesh, Assam, Nagaland, Odisha, Sikkim, and Telangana are not permitted to participate.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top -->
+    <button class="scroll-top" id="scrollTop">↑</button>
+
+    <script src="../js/theme.js"></script>
+    <script>
+        // Tab functionality
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const sections = document.querySelectorAll('.matches-section');
+        
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const tab = btn.dataset.tab;
+                
+                tabBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                sections.forEach(s => s.classList.remove('active'));
+                document.getElementById(`${tab}Section`).classList.add('active');
+            });
+        });
+        
+        // Fetch and display matches
+        async function fetchMatches() {
+            try {
+                const response = await fetch('/api/cricket/current-matches');
+                const data = await response.json();
+                
+                if (data.success) {
+                    displayMatches('liveMatches', data.live, 'live');
+                    displayMatches('upcomingMatches', data.upcoming, 'upcoming');
+                    displayMatches('completedMatches', data.completed, 'completed');
+                    
+                    // Update counts
+                    document.getElementById('liveCount').textContent = data.live.length;
+                    document.getElementById('upcomingCount').textContent = data.upcoming.length;
+                    document.getElementById('completedCount').textContent = data.completed.length;
+                }
+            } catch (error) {
+                console.error('Error fetching matches:', error);
+                showError();
+            }
+        }
+        
+        function displayMatches(containerId, matches, type) {
+            const container = document.getElementById(containerId);
+            
+            if (matches.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M8 12h8M12 8v8"/>
+                        </svg>
+                        <h3>No ${type} matches</h3>
+                        <p>Check back later for ${type} cricket matches.</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            container.innerHTML = matches.map(match => createMatchCard(match, type)).join('');
+        }
+        
+        function createMatchCard(match, type) {
+            const team1 = match.teamInfo?.[0] || { name: match.teams?.[0] || 'Team 1', img: '' };
+            const team2 = match.teamInfo?.[1] || { name: match.teams?.[1] || 'Team 2', img: '' };
+            
+            const score1 = match.score?.find(s => s.inning?.includes(team1.shortname || team1.name))?.r || '';
+            const score2 = match.score?.find(s => s.inning?.includes(team2.shortname || team2.name))?.r || '';
+            
+            const overs1 = match.score?.find(s => s.inning?.includes(team1.shortname || team1.name))?.o || '';
+            const overs2 = match.score?.find(s => s.inning?.includes(team2.shortname || team2.name))?.o || '';
+            
+            const wickets1 = match.score?.find(s => s.inning?.includes(team1.shortname || team1.name))?.w || '';
+            const wickets2 = match.score?.find(s => s.inning?.includes(team2.shortname || team2.name))?.w || '';
+            
+            const score1Display = score1 ? `${score1}/${wickets1} (${overs1})` : '-';
+            const score2Display = score2 ? `${score2}/${wickets2} (${overs2})` : '-';
+            
+            const isLive = type === 'live';
+            const isCompleted = type === 'completed';
+            const isUpcoming = type === 'upcoming';
+            
+            let statusClass = '';
+            let statusText = match.status || match.dateTimeIST;
+            
+            if (isLive) {
+                statusClass = 'live';
+                statusText = '🔴 LIVE - ' + (match.status || 'In Progress');
+            } else if (isCompleted) {
+                statusText = match.status || 'Match Completed';
+            }
+            
+            const fantasyBadge = match.fantasyEnabled ? '<span class="fantasy-badge">⚡ Fantasy</span>' : '';
+            
+            return `
+                <div class="match-card" data-match-id="${match.id}">
+                    <div class="match-card-header">
+                        <span class="match-series">${match.name || 'Cricket Match'}</span>
+                        <span class="match-type ${match.matchType?.toLowerCase()}">${match.matchType || 'MATCH'}</span>
+                    </div>
+                    <div class="match-card-body">
+                        <div class="teams-container">
+                            <div class="team">
+                                <div class="team-logo">
+                                    <img src="${team1.img || '../assets/images/cricket-ball.png'}" alt="${team1.name}" onerror="this.src='../assets/images/cricket-ball.png'">
+                                </div>
+                                <span class="team-name">${team1.shortname || team1.name}</span>
+                                ${!isUpcoming ? `<span class="team-score">${score1Display}</span>` : ''}
+                            </div>
+                            <div class="vs-badge">VS</div>
+                            <div class="team">
+                                <div class="team-logo">
+                                    <img src="${team2.img || '../assets/images/cricket-ball.png'}" alt="${team2.name}" onerror="this.src='../assets/images/cricket-ball.png'">
+                                </div>
+                                <span class="team-name">${team2.shortname || team2.name}</span>
+                                ${!isUpcoming ? `<span class="team-score">${score2Display}</span>` : ''}
+                            </div>
+                        </div>
+                        <div class="match-info">
+                            <p class="match-status ${statusClass}">${statusText}</p>
+                            ${isUpcoming ? `<p class="match-time">🕐 ${match.dateTimeIST}</p>` : ''}
+                            <p class="match-venue">📍 ${match.venue || 'Venue TBA'}</p>
+                        </div>
+                        <div class="match-card-footer">
+                            ${isUpcoming && match.fantasyEnabled ? 
+                                `<a href="create-team.html?match=${match.id}" class="btn-contest">Create Team ${fantasyBadge}</a>` :
+                                isLive && match.fantasyEnabled ?
+                                `<button class="btn-contest" disabled>Contest Locked ${fantasyBadge}</button>` :
+                                isCompleted ?
+                                `<a href="scorecard.html?match=${match.id}" class="btn-contest">View Scorecard</a>` :
+                                `<button class="btn-contest" disabled>No Fantasy Available</button>`
+                            }
+                            ${!isUpcoming ? `<button class="btn-scorecard" onclick="viewScorecard('${match.id}')">📊</button>` : ''}
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+        
+        function viewScorecard(matchId) {
+            window.location.href = `scorecard.html?match=${matchId}`;
+        }
+        
+        function showError() {
+            const containers = ['liveMatches', 'upcomingMatches', 'completedMatches'];
+            containers.forEach(id => {
+                document.getElementById(id).innerHTML = `
+                    <div class="empty-state">
+                        <h3>Unable to load matches</h3>
+                        <p>Please try again later.</p>
+                    </div>
+                `;
+            });
+        }
+        
+        // Check auth status
+        async function checkAuth() {
+            try {
+                const response = await fetch('/api/auth/me');
+                const data = await response.json();
+                
+                if (data.user) {
+                    document.getElementById('loginBtn').style.display = 'none';
+                    document.getElementById('registerBtn').style.display = 'none';
+                    document.getElementById('dashboardBtn').style.display = 'inline-block';
+                }
+            } catch (error) {
+                // Not logged in
+            }
+        }
+        
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            fetchMatches();
+            checkAuth();
+            
+            // Refresh live matches every 30 seconds
+            setInterval(fetchMatches, 30000);
+        });
+    </script>
+</body>
+</html>
