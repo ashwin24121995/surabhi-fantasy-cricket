@@ -404,32 +404,46 @@
     </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <a href="../index.html" class="nav-logo">
-                <img src="../assets/images/logo_v2.png" alt="Surabhi Logo">
-                <span>Surabhi</span>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-inner">
+            <a href="../index.html" class="logo">
+                <img src="../assets/images/logo_v2.webp" alt="Surabhi">
             </a>
-            <div class="nav-menu" id="navMenu">
-                <a href="../index.html" class="nav-link">Home</a>
-                <a href="matches.html" class="nav-link active">Matches</a>
-                <a href="how-to-play.html" class="nav-link">How to Play</a>
-                <a href="about.html" class="nav-link">About</a>
-                <a href="contact.html" class="nav-link">Contact</a>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="matches.html" class="active">Matches</a></li>
+                    <li><a href="how-to-play.html">How to Play</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="nav-buttons" id="navButtons">
+                <a href="login.html" class="btn btn-ghost" id="loginBtn">Login</a>
+                <a href="register.html" class="btn btn-primary" id="registerBtn">Get Started</a>
+                <a href="dashboard.html" class="btn btn-primary" id="dashboardBtn" style="display: none;">Dashboard</a>
             </div>
-            <div class="nav-actions">
-                <a href="login.html" class="btn-login" id="loginBtn">Login</a>
-                <a href="register.html" class="btn-register" id="registerBtn">Register</a>
-                <a href="dashboard.html" class="btn-dashboard" id="dashboardBtn" style="display: none;">Dashboard</a>
-            </div>
-            <button class="nav-toggle" id="navToggle">
-                <span></span>
-                <span></span>
-                <span></span>
+            <button class="mobile-toggle" id="mobileToggle" aria-label="Menu">
+                <span></span><span></span><span></span>
             </button>
         </div>
-    </nav>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <ul>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="matches.html">Matches</a></li>
+            <li><a href="how-to-play.html">How to Play</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <div class="mobile-menu-buttons" id="mobileNavButtons">
+            <a href="login.html" class="btn btn-ghost">Login</a>
+            <a href="register.html" class="btn btn-primary">Get Started</a>
+        </div>
+    </div>
 
     <!-- Hero Section -->
     <section class="matches-hero">
@@ -494,48 +508,84 @@
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="footer-container">
+        <div class="footer-inner">
             <div class="footer-grid">
                 <div class="footer-brand">
-                    <img src="../assets/images/logo_v2.png" alt="Surabhi Logo" class="footer-logo">
-                    <p>India's most trusted FREE-TO-PLAY fantasy cricket platform for entertainment and education.</p>
-                    <div class="footer-badges">
-                        <span class="badge">18+</span>
-                        <span class="badge">100% FREE</span>
-                        <span class="badge">NO REAL MONEY</span>
-                    </div>
+                    <a href="../index.html" class="footer-logo">
+                        <img src="../assets/images/logo_v2.webp" alt="Surabhi">
+                    </a>
+                    <p>India's premier FREE-TO-PLAY fantasy cricket platform for entertainment and education.</p>
                 </div>
                 <div class="footer-links">
                     <h4>Quick Links</h4>
-                    <a href="../index.html">Home</a>
-                    <a href="about.html">About Us</a>
-                    <a href="how-to-play.html">How to Play</a>
-                    <a href="faq.html">FAQ</a>
-                    <a href="blog.html">Blog</a>
-                    <a href="contact.html">Contact Us</a>
+                    <ul>
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="matches.html">Matches</a></li>
+                        <li><a href="how-to-play.html">How to Play</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="matches.html">Matches</a></li>
+                    </ul>
                 </div>
                 <div class="footer-links">
                     <h4>Legal</h4>
-                    <a href="terms.html">Terms & Conditions</a>
-                    <a href="privacy.html">Privacy Policy</a>
-                    <a href="fair-play.html">Fair Play Policy</a>
-                    <a href="responsible-gaming.html">Responsible Gaming</a>
+                    <ul>
+                        <li><a href="terms.html">Terms & Conditions</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="fair-play.html">Fair Play Policy</a></li>
+                        <li><a href="responsible-gaming.html">Responsible Gaming</a></li>
+                    </ul>
                 </div>
-                <div class="footer-contact">
-                    <h4>Contact Us</h4>
-                    <p>📍 Ram Acchayvar 48/2, Ayodhya Puri 2<br>Bijnour, Sarojini Nagar<br>Lucknow, UP 226008</p>
-                    <p>📧 support@skillarenasports.com</p>
+                <div class="footer-links">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li>Ram Acchayvar 48/2</li>
+                        <li>Ayodhya Puri 2, Bijnour</li>
+                        <li>Lucknow, UP 226008</li>
+                        <li><a href="mailto:support@skillarenasports.com">support@skillarenasports.com</a></li>
+                    </ul>
                 </div>
             </div>
+            <div class="footer-disclaimer">
+                <div class="disclaimer-badges">
+                    <span class="disclaimer-badge">🔞 18+ ONLY</span>
+                    <span class="disclaimer-badge">🚫 NO REAL MONEY</span>
+                    <span class="disclaimer-badge">🎮 ENTERTAINMENT ONLY</span>
+                    <span class="disclaimer-badge">📍 STATE RESTRICTIONS APPLY</span>
+                </div>
+                <p class="disclaimer-text">
+                    FREE-TO-PLAY fantasy cricket platform operated by SDSURABHI INFRA PRIVATE LIMITED (CIN: U41002UP2023PTC194590), designed purely for entertainment and educational purposes. No real money is involved, and no prizes or winnings are awarded. Users must be 18 years or older. Users from Andhra Pradesh, Assam, Nagaland, Odisha, Sikkim, and Telangana are not permitted to participate due to government compliance requirements.
+                </p>
+            </div>
             <div class="footer-bottom">
-                <p>© 2026 SDSURABHI INFRA PRIVATE LIMITED. All rights reserved.</p>
-                <p class="disclaimer">FREE-TO-PLAY fantasy cricket platform operated by SDSURABHI INFRA PRIVATE LIMITED (CIN: U41002UP2023PTC194590). No real money involved. Users must be 18+. Users from Andhra Pradesh, Assam, Nagaland, Odisha, Sikkim, and Telangana are not permitted to participate.</p>
+                <p>&copy; 2026 Surabhi. All rights reserved. Operated by SDSURABHI INFRA PRIVATE LIMITED (CIN: U41002UP2023PTC194590)</p>
             </div>
         </div>
     </footer>
 
     <!-- Scroll to Top -->
-    <button class="scroll-top" id="scrollTop">↑</button>
+    <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+    </button>
+
+    <!-- Cookie Banner -->
+    <div class="cookie-banner" id="cookieBanner">
+        <div class="cookie-content">
+            <h4>🍪 We Use Cookies</h4>
+            <p>We use cookies to improve your experience. <a href="privacy.html">Privacy Policy</a></p>
+            <div class="cookie-buttons">
+                <button class="btn btn-ghost" id="cookieDecline">Decline</button>
+                <button class="btn btn-primary" id="cookieAccept">Accept</button>
+            </div>
+        </div>
+    </div>
 
     <script src="../js/lib/chart.min.js"></script>
     <script src="../js/theme.js"></script>
