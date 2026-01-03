@@ -404,6 +404,21 @@
     </div>
     
     <script>
+        // Check if user is already logged in
+        (function() {
+            const user = localStorage.getItem('user');
+            if (user) {
+                // User is already logged in, check for redirect or go to dashboard
+                const redirectUrl = sessionStorage.getItem('redirectAfterLogin');
+                if (redirectUrl) {
+                    sessionStorage.removeItem('redirectAfterLogin');
+                    window.location.href = redirectUrl;
+                } else {
+                    window.location.href = 'dashboard.html';
+                }
+            }
+        })();
+        
         function togglePassword() {
             const passwordInput = document.getElementById('password');
             const eyeIcon = document.getElementById('eyeIcon');

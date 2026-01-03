@@ -614,6 +614,15 @@
     </div>
     
     <script>
+        // Check if user is already logged in
+        (function() {
+            const user = localStorage.getItem('user');
+            if (user) {
+                // User is already logged in, redirect to dashboard
+                window.location.href = 'dashboard.html';
+            }
+        })();
+        
         // Toggle password visibility
         function togglePassword(inputId, iconId) {
             const input = document.getElementById(inputId);
