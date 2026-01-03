@@ -48,7 +48,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(135deg, var(--primary-green) 0%, var(--primary-dark) 100%);
+            background: var(--dark);
             padding: 2rem;
             position: relative;
         }
@@ -61,21 +61,22 @@
             right: 0;
             bottom: 0;
             background: url('../assets/images/hero-bg.webp') center/cover no-repeat;
-            opacity: 0.1;
+            opacity: 0.15;
         }
         
         .auth-container {
             position: relative;
             z-index: 1;
             width: 100%;
-            max-width: 500px;
+            max-width: 550px;
         }
         
         .auth-card {
-            background: var(--bg-white);
+            background: var(--dark-2);
             border-radius: var(--radius-xl);
             padding: 2.5rem;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
         
         .auth-logo {
@@ -96,29 +97,26 @@
         .auth-header h1 {
             font-size: 1.75rem;
             font-weight: 700;
-            color: var(--text-dark);
+            color: var(--white);
             margin-bottom: 0.5rem;
         }
         
         .auth-header p {
-            color: var(--text-light);
+            color: var(--gray-400);
         }
         
         .free-badge {
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            background: #f0fdf4;
-            color: var(--primary-green);
+            background: rgba(22, 163, 74, 0.2);
+            color: var(--primary-light);
             padding: 0.5rem 1rem;
             border-radius: 50px;
             font-size: 0.875rem;
             font-weight: 600;
             margin-bottom: 1rem;
-        }
-        
-        .form-group {
-            margin-bottom: 1.25rem;
+            border: 1px solid rgba(22, 163, 74, 0.3);
         }
         
         .form-row {
@@ -127,42 +125,70 @@
             gap: 1rem;
         }
         
+        .form-group {
+            margin-bottom: 1.25rem;
+        }
+        
         .form-label {
             display: block;
             font-weight: 600;
-            color: var(--text-dark);
+            color: var(--white);
             margin-bottom: 0.5rem;
-            font-size: 0.875rem;
+            font-size: 0.9rem;
         }
         
-        .form-label .required {
+        .required {
             color: #ef4444;
         }
         
-        .form-input, .form-select {
+        .form-input,
+        .form-select {
             width: 100%;
-            padding: 0.75rem 1rem;
-            border: 2px solid var(--border-light);
+            padding: 0.875rem 1rem;
+            border: 2px solid var(--dark-4);
             border-radius: var(--radius-md);
             font-size: 1rem;
             transition: all 0.3s ease;
-            background: var(--bg-white);
+            background: var(--dark-3);
+            color: var(--white);
         }
         
-        .form-input:focus, .form-select:focus {
+        .form-input::placeholder {
+            color: var(--gray-500);
+        }
+        
+        .form-select {
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23737373' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            background-size: 1rem;
+            padding-right: 2.5rem;
+        }
+        
+        .form-select option {
+            background: var(--dark-3);
+            color: var(--white);
+        }
+        
+        .form-input:focus,
+        .form-select:focus {
             outline: none;
-            border-color: var(--primary-green);
-            box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.1);
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.2);
+            background: var(--dark-4);
         }
         
-        .form-input.error, .form-select.error {
+        .form-input.error,
+        .form-select.error {
             border-color: #ef4444;
         }
         
         .form-error {
-            color: #ef4444;
-            font-size: 0.75rem;
-            margin-top: 0.25rem;
+            color: #f87171;
+            font-size: 0.8rem;
+            margin-top: 0.5rem;
             display: none;
         }
         
@@ -186,8 +212,12 @@
             background: none;
             border: none;
             cursor: pointer;
-            color: var(--text-light);
+            color: var(--gray-400);
             padding: 0;
+        }
+        
+        .password-toggle-btn:hover {
+            color: var(--primary);
         }
         
         .password-strength {
@@ -196,7 +226,7 @@
         
         .password-strength-bar {
             height: 4px;
-            background: var(--border-light);
+            background: var(--dark-4);
             border-radius: 2px;
             overflow: hidden;
         }
@@ -210,6 +240,7 @@
         .password-strength-text {
             font-size: 0.75rem;
             margin-top: 0.25rem;
+            color: var(--gray-400);
         }
         
         .terms-checkbox {
@@ -223,29 +254,31 @@
             width: 18px;
             height: 18px;
             margin-top: 2px;
-            accent-color: var(--primary-green);
+            accent-color: var(--primary);
             flex-shrink: 0;
+            cursor: pointer;
         }
         
         .terms-checkbox label {
-            color: var(--text-light);
+            color: var(--gray-400);
             font-size: 0.875rem;
             line-height: 1.5;
         }
         
         .terms-checkbox a {
-            color: var(--primary-green);
+            color: var(--primary);
             text-decoration: none;
         }
         
         .terms-checkbox a:hover {
             text-decoration: underline;
+            color: var(--primary-light);
         }
         
         .auth-submit {
             width: 100%;
             padding: 1rem;
-            background: linear-gradient(135deg, var(--primary-green) 0%, var(--primary-dark) 100%);
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
             color: white;
             border: none;
             border-radius: var(--radius-md);
@@ -253,6 +286,9 @@
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         
         .auth-submit:hover {
@@ -277,28 +313,29 @@
             content: '';
             flex: 1;
             height: 1px;
-            background: var(--border-light);
+            background: var(--dark-4);
         }
         
         .auth-divider span {
             padding: 0 1rem;
-            color: var(--text-light);
+            color: var(--gray-500);
             font-size: 0.875rem;
         }
         
         .auth-footer {
             text-align: center;
-            color: var(--text-light);
+            color: var(--gray-400);
         }
         
         .auth-footer a {
-            color: var(--primary-green);
+            color: var(--primary);
             font-weight: 600;
             text-decoration: none;
         }
         
         .auth-footer a:hover {
             text-decoration: underline;
+            color: var(--primary-light);
         }
         
         .alert {
@@ -313,21 +350,21 @@
         }
         
         .alert-error {
-            background: #fef2f2;
-            border: 1px solid #fecaca;
-            color: #dc2626;
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            color: #f87171;
         }
         
         .alert-success {
-            background: #f0fdf4;
-            border: 1px solid #bbf7d0;
-            color: #16a34a;
+            background: rgba(22, 163, 74, 0.1);
+            border: 1px solid rgba(22, 163, 74, 0.3);
+            color: #4ade80;
         }
         
         .alert-warning {
-            background: #fffbeb;
-            border: 1px solid #fde68a;
-            color: #d97706;
+            background: rgba(245, 158, 11, 0.1);
+            border: 1px solid rgba(245, 158, 11, 0.3);
+            color: #fbbf24;
         }
         
         .back-home {
@@ -339,12 +376,18 @@
             gap: 0.5rem;
             color: white;
             text-decoration: none;
-            font-weight: 600;
+            font-weight: 500;
             z-index: 10;
+            padding: 0.5rem 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-md);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
         }
         
         .back-home:hover {
-            opacity: 0.8;
+            background: rgba(255, 255, 255, 0.2);
+            color: var(--primary-light);
         }
         
         .loading-spinner {
@@ -367,8 +410,8 @@
         }
         
         .restricted-notice {
-            background: #fef2f2;
-            border: 1px solid #fecaca;
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.3);
             border-radius: var(--radius-md);
             padding: 0.75rem 1rem;
             margin-top: 0.5rem;
@@ -380,12 +423,16 @@
         }
         
         .restricted-notice p {
-            color: #dc2626;
+            color: #f87171;
             font-size: 0.75rem;
             margin: 0;
         }
         
         @media (max-width: 640px) {
+            .auth-page {
+                padding: 1rem;
+            }
+            
             .auth-card {
                 padding: 1.5rem;
             }
@@ -515,7 +562,7 @@
                         <div class="password-toggle">
                             <input type="password" id="password" name="password" class="form-input" placeholder="Create a strong password" required>
                             <button type="button" class="password-toggle-btn" onclick="togglePassword('password', 'eyeIcon1')">
-                                <svg id="eyeIcon1" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                                <svg id="eyeIcon1" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
                             </button>
                         </div>
                         <div class="password-strength">
@@ -532,7 +579,7 @@
                         <div class="password-toggle">
                             <input type="password" id="confirmPassword" name="confirmPassword" class="form-input" placeholder="Confirm your password" required>
                             <button type="button" class="password-toggle-btn" onclick="togglePassword('confirmPassword', 'eyeIcon2')">
-                                <svg id="eyeIcon2" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                                <svg id="eyeIcon2" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
                             </button>
                         </div>
                         <p class="form-error" id="confirmPasswordError">Passwords do not match</p>
@@ -551,7 +598,7 @@
                     
                     <button type="submit" class="auth-submit" id="submitBtn">
                         <span class="loading-spinner"></span>
-                        <span class="btn-text">Create Free Account</span>
+                        Create Free Account
                     </button>
                 </form>
                 
@@ -560,122 +607,94 @@
                 </div>
                 
                 <div class="auth-footer">
-                    <p>Already registered? <a href="login.html">Login Here</a></p>
+                    <p>Already registered? <a href="login.html">Login here</a></p>
                 </div>
             </div>
         </div>
     </div>
-
+    
     <script>
         // Toggle password visibility
         function togglePassword(inputId, iconId) {
-            const passwordInput = document.getElementById(inputId);
-            const eyeIcon = document.getElementById(iconId);
+            const input = document.getElementById(inputId);
+            const icon = document.getElementById(iconId);
             
-            if (passwordInput.type === 'password') {
-                passwordInput.type = 'text';
-                eyeIcon.innerHTML = '<path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/>';
+            if (input.type === 'password') {
+                input.type = 'text';
+                icon.innerHTML = '<path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/>';
             } else {
-                passwordInput.type = 'password';
-                eyeIcon.innerHTML = '<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>';
+                input.type = 'password';
+                icon.innerHTML = '<path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/>';
             }
         }
         
-        // Show alert
-        function showAlert(message, type) {
-            const alertBox = document.getElementById('alertBox');
-            alertBox.textContent = message;
-            alertBox.className = `alert alert-${type} show`;
-            alertBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-        }
-        
-        // Hide alert
-        function hideAlert() {
-            const alertBox = document.getElementById('alertBox');
-            alertBox.className = 'alert';
-        }
-        
-        // Validate email
-        function validateEmail(email) {
-            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            return re.test(email);
-        }
-        
-        // Check password strength
-        function checkPasswordStrength(password) {
-            let strength = 0;
-            if (password.length >= 8) strength++;
-            if (password.length >= 12) strength++;
-            if (/[a-z]/.test(password) && /[A-Z]/.test(password)) strength++;
-            if (/\d/.test(password)) strength++;
-            if (/[^a-zA-Z0-9]/.test(password)) strength++;
-            return strength;
-        }
-        
-        // Update password strength indicator
+        // Password strength checker
         document.getElementById('password').addEventListener('input', function() {
             const password = this.value;
-            const strength = checkPasswordStrength(password);
-            const fill = document.getElementById('strengthFill');
-            const text = document.getElementById('strengthText');
+            const strengthFill = document.getElementById('strengthFill');
+            const strengthText = document.getElementById('strengthText');
             
-            const colors = ['#ef4444', '#f97316', '#eab308', '#22c55e', '#16a34a'];
-            const labels = ['Very Weak', 'Weak', 'Fair', 'Strong', 'Very Strong'];
+            let strength = 0;
+            let text = '';
+            let color = '';
             
-            if (password.length === 0) {
-                fill.style.width = '0';
-                text.textContent = '';
-            } else {
-                fill.style.width = `${(strength / 5) * 100}%`;
-                fill.style.background = colors[strength - 1] || colors[0];
-                text.textContent = labels[strength - 1] || labels[0];
-                text.style.color = colors[strength - 1] || colors[0];
+            if (password.length >= 8) strength++;
+            if (password.match(/[a-z]/)) strength++;
+            if (password.match(/[A-Z]/)) strength++;
+            if (password.match(/[0-9]/)) strength++;
+            if (password.match(/[^a-zA-Z0-9]/)) strength++;
+            
+            switch (strength) {
+                case 0:
+                case 1:
+                    text = 'Weak';
+                    color = '#ef4444';
+                    break;
+                case 2:
+                    text = 'Fair';
+                    color = '#f97316';
+                    break;
+                case 3:
+                    text = 'Good';
+                    color = '#eab308';
+                    break;
+                case 4:
+                    text = 'Strong';
+                    color = '#22c55e';
+                    break;
+                case 5:
+                    text = 'Very Strong';
+                    color = '#16a34a';
+                    break;
             }
+            
+            strengthFill.style.width = (strength * 20) + '%';
+            strengthFill.style.background = color;
+            strengthText.textContent = password ? text : '';
+            strengthText.style.color = color;
         });
         
-        // Check for restricted states
+        // State restriction check
         document.getElementById('state').addEventListener('change', function() {
             const selectedOption = this.options[this.selectedIndex];
             const isRestricted = selectedOption.getAttribute('data-restricted') === 'true';
-            const notice = document.getElementById('restrictedNotice');
+            const restrictedNotice = document.getElementById('restrictedNotice');
             
             if (isRestricted) {
-                notice.classList.add('show');
+                restrictedNotice.classList.add('show');
             } else {
-                notice.classList.remove('show');
-            }
-        });
-        
-        // Calculate age
-        function calculateAge(dateOfBirth) {
-            const today = new Date();
-            const birthDate = new Date(dateOfBirth);
-            let age = today.getFullYear() - birthDate.getFullYear();
-            const monthDiff = today.getMonth() - birthDate.getMonth();
-            if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
-                age--;
-            }
-            return age;
-        }
-        
-        // Set max date for DOB (must be 18+)
-        document.addEventListener('DOMContentLoaded', function() {
-            const today = new Date();
-            const maxDate = new Date(today.getFullYear() - 18, today.getMonth(), today.getDate());
-            document.getElementById('dateOfBirth').max = maxDate.toISOString().split('T')[0];
-            
-            // Check if already logged in
-            const user = localStorage.getItem('user');
-            if (user) {
-                window.location.href = 'dashboard.html';
+                restrictedNotice.classList.remove('show');
             }
         });
         
         // Form submission
         document.getElementById('registerForm').addEventListener('submit', async function(e) {
             e.preventDefault();
-            hideAlert();
             
+            const submitBtn = document.getElementById('submitBtn');
+            const alertBox = document.getElementById('alertBox');
+            
+            // Get form values
             const fullName = document.getElementById('fullName').value.trim();
             const username = document.getElementById('username').value.trim();
             const email = document.getElementById('email').value.trim();
@@ -685,92 +704,95 @@
             const password = document.getElementById('password').value;
             const confirmPassword = document.getElementById('confirmPassword').value;
             const terms = document.getElementById('terms').checked;
-            const submitBtn = document.getElementById('submitBtn');
             
             // Reset errors
-            document.querySelectorAll('.form-input, .form-select').forEach(input => input.classList.remove('error'));
-            document.querySelectorAll('.form-error').forEach(error => error.classList.remove('show'));
+            alertBox.classList.remove('show', 'alert-error', 'alert-success', 'alert-warning');
+            document.querySelectorAll('.form-error').forEach(el => el.classList.remove('show'));
+            document.querySelectorAll('.form-input, .form-select').forEach(el => el.classList.remove('error'));
             
-            // Validate
-            let hasError = false;
+            // Validation
+            let isValid = true;
             
-            if (!fullName || fullName.length < 2) {
-                document.getElementById('fullName').classList.add('error');
+            if (!fullName) {
                 document.getElementById('fullNameError').classList.add('show');
-                hasError = true;
+                document.getElementById('fullName').classList.add('error');
+                isValid = false;
             }
             
             if (!username || username.length < 3 || username.length > 20) {
-                document.getElementById('username').classList.add('error');
                 document.getElementById('usernameError').classList.add('show');
-                hasError = true;
+                document.getElementById('username').classList.add('error');
+                isValid = false;
             }
             
-            if (!email || !validateEmail(email)) {
-                document.getElementById('email').classList.add('error');
+            if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
                 document.getElementById('emailError').classList.add('show');
-                hasError = true;
+                document.getElementById('email').classList.add('error');
+                isValid = false;
             }
             
-            if (mobile && !/^[6-9]\d{9}$/.test(mobile)) {
-                document.getElementById('mobile').classList.add('error');
-                document.getElementById('mobileError').classList.add('show');
-                hasError = true;
-            }
-            
-            if (!dateOfBirth || calculateAge(dateOfBirth) < 18) {
-                document.getElementById('dateOfBirth').classList.add('error');
+            // Age check (18+)
+            if (dateOfBirth) {
+                const dob = new Date(dateOfBirth);
+                const today = new Date();
+                const age = Math.floor((today - dob) / (365.25 * 24 * 60 * 60 * 1000));
+                if (age < 18) {
+                    document.getElementById('dobError').classList.add('show');
+                    document.getElementById('dateOfBirth').classList.add('error');
+                    isValid = false;
+                }
+            } else {
                 document.getElementById('dobError').classList.add('show');
-                hasError = true;
+                document.getElementById('dateOfBirth').classList.add('error');
+                isValid = false;
             }
             
             if (!state) {
-                document.getElementById('state').classList.add('error');
                 document.getElementById('stateError').classList.add('show');
-                hasError = true;
+                document.getElementById('state').classList.add('error');
+                isValid = false;
             }
             
             // Check restricted state
             const selectedOption = document.getElementById('state').options[document.getElementById('state').selectedIndex];
-            if (selectedOption && selectedOption.getAttribute('data-restricted') === 'true') {
-                showAlert(`Users from ${state} are not permitted to participate due to government compliance requirements.`, 'error');
+            if (selectedOption.getAttribute('data-restricted') === 'true') {
+                alertBox.textContent = 'Registration is not available for users from your state due to government compliance requirements.';
+                alertBox.classList.add('show', 'alert-warning');
                 return;
             }
             
             if (!password || password.length < 8) {
-                document.getElementById('password').classList.add('error');
                 document.getElementById('passwordError').classList.add('show');
-                hasError = true;
+                document.getElementById('password').classList.add('error');
+                isValid = false;
             }
             
             if (password !== confirmPassword) {
-                document.getElementById('confirmPassword').classList.add('error');
                 document.getElementById('confirmPasswordError').classList.add('show');
-                hasError = true;
+                document.getElementById('confirmPassword').classList.add('error');
+                isValid = false;
             }
             
             if (!terms) {
                 document.getElementById('termsError').classList.add('show');
-                hasError = true;
+                isValid = false;
             }
             
-            if (hasError) return;
+            if (!isValid) return;
             
-            // Show loading
-            submitBtn.classList.add('loading');
+            // Submit
             submitBtn.disabled = true;
+            submitBtn.classList.add('loading');
             
             try {
-                const response = await fetch('/api/auth/register', {
+                const response = await fetch('/api/register', {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
+                    headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
                         fullName,
                         username,
                         email,
-                        mobile: mobile || null,
+                        mobile,
                         dateOfBirth,
                         state,
                         password
@@ -779,19 +801,23 @@
                 
                 const data = await response.json();
                 
-                if (response.ok) {
-                    showAlert('Registration successful! Redirecting to login...', 'success');
+                if (data.success) {
+                    alertBox.textContent = 'Account created successfully! Redirecting to login...';
+                    alertBox.classList.add('show', 'alert-success');
+                    
                     setTimeout(() => {
                         window.location.href = 'login.html';
                     }, 2000);
                 } else {
-                    showAlert(data.error || 'Registration failed. Please try again.', 'error');
+                    alertBox.textContent = data.message || 'Registration failed. Please try again.';
+                    alertBox.classList.add('show', 'alert-error');
                 }
             } catch (error) {
-                showAlert('Network error. Please check your connection and try again.', 'error');
+                alertBox.textContent = 'An error occurred. Please try again.';
+                alertBox.classList.add('show', 'alert-error');
             } finally {
-                submitBtn.classList.remove('loading');
                 submitBtn.disabled = false;
+                submitBtn.classList.remove('loading');
             }
         });
     </script>

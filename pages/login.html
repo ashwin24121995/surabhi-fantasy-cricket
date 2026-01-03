@@ -48,7 +48,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(135deg, var(--primary-green) 0%, var(--primary-dark) 100%);
+            background: var(--dark);
             padding: 2rem;
             position: relative;
         }
@@ -61,7 +61,7 @@
             right: 0;
             bottom: 0;
             background: url('../assets/images/hero-bg.webp') center/cover no-repeat;
-            opacity: 0.1;
+            opacity: 0.15;
         }
         
         .auth-container {
@@ -72,10 +72,11 @@
         }
         
         .auth-card {
-            background: var(--bg-white);
+            background: var(--dark-2);
             border-radius: var(--radius-xl);
             padding: 2.5rem;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
         
         .auth-logo {
@@ -96,12 +97,12 @@
         .auth-header h1 {
             font-size: 1.75rem;
             font-weight: 700;
-            color: var(--text-dark);
+            color: var(--white);
             margin-bottom: 0.5rem;
         }
         
         .auth-header p {
-            color: var(--text-light);
+            color: var(--gray-400);
         }
         
         .form-group {
@@ -111,24 +112,31 @@
         .form-label {
             display: block;
             font-weight: 600;
-            color: var(--text-dark);
+            color: var(--white);
             margin-bottom: 0.5rem;
+            font-size: 0.9rem;
         }
         
         .form-input {
             width: 100%;
             padding: 0.875rem 1rem;
-            border: 2px solid var(--border-light);
+            border: 2px solid var(--dark-4);
             border-radius: var(--radius-md);
             font-size: 1rem;
             transition: all 0.3s ease;
-            background: var(--bg-white);
+            background: var(--dark-3);
+            color: var(--white);
+        }
+        
+        .form-input::placeholder {
+            color: var(--gray-500);
         }
         
         .form-input:focus {
             outline: none;
-            border-color: var(--primary-green);
-            box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.1);
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.2);
+            background: var(--dark-4);
         }
         
         .form-input.error {
@@ -162,12 +170,12 @@
             background: none;
             border: none;
             cursor: pointer;
-            color: var(--text-light);
+            color: var(--gray-400);
             padding: 0;
         }
         
         .password-toggle-btn:hover {
-            color: var(--primary-green);
+            color: var(--primary);
         }
         
         .form-options {
@@ -188,17 +196,18 @@
         .remember-me input {
             width: 18px;
             height: 18px;
-            accent-color: var(--primary-green);
+            accent-color: var(--primary);
+            cursor: pointer;
         }
         
         .remember-me label {
-            color: var(--text-light);
+            color: var(--gray-400);
             font-size: 0.875rem;
             cursor: pointer;
         }
         
         .forgot-password {
-            color: var(--primary-green);
+            color: var(--primary);
             font-size: 0.875rem;
             font-weight: 600;
             text-decoration: none;
@@ -206,12 +215,13 @@
         
         .forgot-password:hover {
             text-decoration: underline;
+            color: var(--primary-light);
         }
         
         .auth-submit {
             width: 100%;
             padding: 1rem;
-            background: linear-gradient(135deg, var(--primary-green) 0%, var(--primary-dark) 100%);
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
             color: white;
             border: none;
             border-radius: var(--radius-md);
@@ -243,28 +253,29 @@
             content: '';
             flex: 1;
             height: 1px;
-            background: var(--border-light);
+            background: var(--dark-4);
         }
         
         .auth-divider span {
             padding: 0 1rem;
-            color: var(--text-light);
+            color: var(--gray-500);
             font-size: 0.875rem;
         }
         
         .auth-footer {
             text-align: center;
-            color: var(--text-light);
+            color: var(--gray-400);
         }
         
         .auth-footer a {
-            color: var(--primary-green);
+            color: var(--primary);
             font-weight: 600;
             text-decoration: none;
         }
         
         .auth-footer a:hover {
             text-decoration: underline;
+            color: var(--primary-light);
         }
         
         .alert {
@@ -279,15 +290,15 @@
         }
         
         .alert-error {
-            background: #fef2f2;
-            border: 1px solid #fecaca;
-            color: #dc2626;
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            color: #f87171;
         }
         
         .alert-success {
-            background: #f0fdf4;
-            border: 1px solid #bbf7d0;
-            color: #16a34a;
+            background: rgba(22, 163, 74, 0.1);
+            border: 1px solid rgba(22, 163, 74, 0.3);
+            color: #4ade80;
         }
         
         .back-home {
@@ -299,34 +310,25 @@
             gap: 0.5rem;
             color: white;
             text-decoration: none;
-            font-weight: 600;
+            font-weight: 500;
             z-index: 10;
+            padding: 0.5rem 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-md);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
         }
         
         .back-home:hover {
-            opacity: 0.8;
+            background: rgba(255, 255, 255, 0.2);
+            color: var(--primary-light);
         }
         
-        .loading-spinner {
-            display: none;
-            width: 20px;
-            height: 20px;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            border-radius: 50%;
-            border-top-color: white;
-            animation: spin 0.8s linear infinite;
-            margin-right: 0.5rem;
-        }
-        
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-        
-        .auth-submit.loading .loading-spinner {
-            display: inline-block;
-        }
-        
-        @media (max-width: 640px) {
+        @media (max-width: 480px) {
+            .auth-page {
+                padding: 1rem;
+            }
+            
             .auth-card {
                 padding: 1.5rem;
             }
@@ -349,7 +351,7 @@
             <div class="auth-card">
                 <div class="auth-logo">
                     <a href="../index.html">
-                        <img src="../assets/images/logo_v2.webp" alt="Surabhi Logo">
+                        <img src="../assets/images/logo_v2.webp" alt="Surabhi">
                     </a>
                 </div>
                 
@@ -358,38 +360,36 @@
                     <p>Login to access your fantasy cricket account</p>
                 </div>
                 
-                <div id="alertBox" class="alert"></div>
+                <div class="alert alert-error" id="errorAlert"></div>
+                <div class="alert alert-success" id="successAlert"></div>
                 
-                <form id="loginForm" novalidate>
+                <form id="loginForm">
                     <div class="form-group">
-                        <label for="email" class="form-label">Email Address</label>
-                        <input type="email" id="email" name="email" class="form-input" placeholder="Enter your email" required>
-                        <p class="form-error" id="emailError">Please enter a valid email address</p>
+                        <label class="form-label" for="email">Email Address</label>
+                        <input type="email" id="email" class="form-input" placeholder="Enter your email" required>
+                        <span class="form-error" id="emailError">Please enter a valid email address</span>
                     </div>
                     
                     <div class="form-group">
-                        <label for="password" class="form-label">Password</label>
+                        <label class="form-label" for="password">Password</label>
                         <div class="password-toggle">
-                            <input type="password" id="password" name="password" class="form-input" placeholder="Enter your password" required>
+                            <input type="password" id="password" class="form-input" placeholder="Enter your password" required>
                             <button type="button" class="password-toggle-btn" onclick="togglePassword()">
-                                <svg id="eyeIcon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" id="eyeIcon"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
                             </button>
                         </div>
-                        <p class="form-error" id="passwordError">Password is required</p>
+                        <span class="form-error" id="passwordError">Password is required</span>
                     </div>
                     
                     <div class="form-options">
                         <div class="remember-me">
-                            <input type="checkbox" id="remember" name="remember">
+                            <input type="checkbox" id="remember">
                             <label for="remember">Remember me</label>
                         </div>
                         <a href="forgot-password.html" class="forgot-password">Forgot Password?</a>
                     </div>
                     
-                    <button type="submit" class="auth-submit" id="submitBtn">
-                        <span class="loading-spinner"></span>
-                        <span class="btn-text">Login</span>
-                    </button>
+                    <button type="submit" class="auth-submit" id="submitBtn">Login</button>
                 </form>
                 
                 <div class="auth-divider">
@@ -402,9 +402,8 @@
             </div>
         </div>
     </div>
-
+    
     <script>
-        // Toggle password visibility
         function togglePassword() {
             const passwordInput = document.getElementById('password');
             const eyeIcon = document.getElementById('eyeIcon');
@@ -414,104 +413,87 @@
                 eyeIcon.innerHTML = '<path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/>';
             } else {
                 passwordInput.type = 'password';
-                eyeIcon.innerHTML = '<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>';
+                eyeIcon.innerHTML = '<path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/>';
             }
         }
         
-        // Show alert
-        function showAlert(message, type) {
-            const alertBox = document.getElementById('alertBox');
-            alertBox.textContent = message;
-            alertBox.className = `alert alert-${type} show`;
-        }
-        
-        // Hide alert
-        function hideAlert() {
-            const alertBox = document.getElementById('alertBox');
-            alertBox.className = 'alert';
-        }
-        
-        // Validate email
-        function validateEmail(email) {
-            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            return re.test(email);
-        }
-        
-        // Form submission
         document.getElementById('loginForm').addEventListener('submit', async function(e) {
             e.preventDefault();
-            hideAlert();
             
             const email = document.getElementById('email').value.trim();
             const password = document.getElementById('password').value;
             const submitBtn = document.getElementById('submitBtn');
+            const errorAlert = document.getElementById('errorAlert');
+            const successAlert = document.getElementById('successAlert');
             
             // Reset errors
-            document.querySelectorAll('.form-input').forEach(input => input.classList.remove('error'));
-            document.querySelectorAll('.form-error').forEach(error => error.classList.remove('show'));
+            errorAlert.classList.remove('show');
+            successAlert.classList.remove('show');
+            document.getElementById('emailError').classList.remove('show');
+            document.getElementById('passwordError').classList.remove('show');
+            document.getElementById('email').classList.remove('error');
+            document.getElementById('password').classList.remove('error');
             
             // Validate
-            let hasError = false;
+            let isValid = true;
             
-            if (!email || !validateEmail(email)) {
-                document.getElementById('email').classList.add('error');
+            if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
                 document.getElementById('emailError').classList.add('show');
-                hasError = true;
+                document.getElementById('email').classList.add('error');
+                isValid = false;
             }
             
             if (!password) {
-                document.getElementById('password').classList.add('error');
                 document.getElementById('passwordError').classList.add('show');
-                hasError = true;
+                document.getElementById('password').classList.add('error');
+                isValid = false;
             }
             
-            if (hasError) return;
+            if (!isValid) return;
             
-            // Show loading
-            submitBtn.classList.add('loading');
+            // Submit
             submitBtn.disabled = true;
+            submitBtn.textContent = 'Logging in...';
             
             try {
-                const response = await fetch('/api/auth/login', {
+                const response = await fetch('/api/login', {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
+                    headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ email, password })
                 });
                 
                 const data = await response.json();
                 
-                if (response.ok) {
-                    showAlert('Login successful! Redirecting...', 'success');
-                    // Store user info in localStorage
+                if (data.success) {
+                    successAlert.textContent = 'Login successful! Redirecting...';
+                    successAlert.classList.add('show');
+                    
+                    // Store user data
                     localStorage.setItem('user', JSON.stringify(data.user));
-                    // Check if there's a redirect URL stored (e.g., from Create Team)
+                    localStorage.setItem('token', data.token);
+                    
+                    // Check for redirect
                     const redirectUrl = sessionStorage.getItem('redirectAfterLogin');
-                    setTimeout(() => {
-                        if (redirectUrl) {
-                            sessionStorage.removeItem('redirectAfterLogin');
+                    if (redirectUrl) {
+                        sessionStorage.removeItem('redirectAfterLogin');
+                        setTimeout(() => {
                             window.location.href = redirectUrl;
-                        } else {
+                        }, 1000);
+                    } else {
+                        setTimeout(() => {
                             window.location.href = 'dashboard.html';
-                        }
-                    }, 1000);
+                        }, 1000);
+                    }
                 } else {
-                    showAlert(data.error || 'Login failed. Please try again.', 'error');
+                    errorAlert.textContent = data.message || 'Invalid email or password';
+                    errorAlert.classList.add('show');
                 }
             } catch (error) {
-                showAlert('Network error. Please check your connection and try again.', 'error');
+                errorAlert.textContent = 'An error occurred. Please try again.';
+                errorAlert.classList.add('show');
             } finally {
-                submitBtn.classList.remove('loading');
                 submitBtn.disabled = false;
-            }
-        });
-        
-        // Check if already logged in
-        document.addEventListener('DOMContentLoaded', function() {
-            const user = localStorage.getItem('user');
-            if (user) {
-                window.location.href = 'dashboard.html';
+                submitBtn.textContent = 'Login';
             }
         });
     </script>
