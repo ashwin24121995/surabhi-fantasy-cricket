@@ -303,48 +303,109 @@ function calculatePlayerCredits(player) {
 // Get current/live matches
 app.get('/api/cricket/current-matches', async (req, res) => {
     try {
-        const response = await fetch(`${CRICKET_API_BASE_URL}/currentMatches?apikey=${CRICKET_API_KEY}&offset=0`);
-        const data = await response.json();
+        // Fetch current matches
+        const currentResponse = await fetch(`${CRICKET_API_BASE_URL}/currentMatches?apikey=${CRICKET_API_KEY}&offset=0`);
+        const currentData = await currentResponse.json();
         
-        if (data.status !== 'success') {
-            return res.status(400).json({ error: 'Failed to fetch matches' });
+        // Fetch upcoming series to get upcoming matches
+        const seriesResponse = await fetch(`${CRICKET_API_BASE_URL}/series?apikey=${CRICKET_API_KEY}&offset=0`);
+        const seriesData = await seriesResponse.json();
+        
+        let allMatches = [];
+        let upcomingMatches = [];
+        
+        // Process current matches
+        if (currentData.status === 'success' && currentData.data) {
+            allMatches = currentData.data.map(match => ({
+                id: match.id,
+                name: match.name,
+                matchType: match.matchType?.toUpperCase(),
+                status: match.status,
+                venue: match.venue,
+                date: match.date,
+                dateTimeGMT: match.dateTimeGMT,
+                dateTimeIST: formatDateIST(match.dateTimeGMT),
+                teams: match.teams,
+                teamInfo: match.teamInfo,
+                score: match.score,
+                tossWinner: match.tossWinner,
+                tossChoice: match.tossChoice,
+                matchWinner: match.matchWinner,
+                seriesId: match.series_id,
+                fantasyEnabled: match.fantasyEnabled,
+                hasSquad: match.hasSquad,
+                matchStarted: match.matchStarted,
+                matchEnded: match.matchEnded
+            }));
         }
         
-        // Filter and format matches
-        const matches = data.data.map(match => ({
-            id: match.id,
-            name: match.name,
-            matchType: match.matchType?.toUpperCase(),
-            status: match.status,
-            venue: match.venue,
-            date: match.date,
-            dateTimeGMT: match.dateTimeGMT,
-            dateTimeIST: formatDateIST(match.dateTimeGMT),
-            teams: match.teams,
-            teamInfo: match.teamInfo,
-            score: match.score,
-            tossWinner: match.tossWinner,
-            tossChoice: match.tossChoice,
-            matchWinner: match.matchWinner,
-            seriesId: match.series_id,
-            fantasyEnabled: match.fantasyEnabled,
-            hasSquad: match.hasSquad,
-            matchStarted: match.matchStarted,
-            matchEnded: match.matchEnded
-        }));
-        
-        // Separate into live, upcoming, and completed
+        // Find upcoming series (starting within next 60 days)
         const now = new Date();
-        const liveMatches = matches.filter(m => m.matchStarted && !m.matchEnded);
-        const upcomingMatches = matches.filter(m => !m.matchStarted && new Date(m.dateTimeGMT) > now);
-        const completedMatches = matches.filter(m => m.matchEnded);
+        const sixtyDaysLater = new Date(now.getTime() + 60 * 24 * 60 * 60 * 1000);
+        
+        if (seriesData.status === 'success' && seriesData.data) {
+            const upcomingSeries = seriesData.data.filter(s => {
+                const startDate = new Date(s.startDate);
+                return startDate >= now && startDate <= sixtyDaysLater;
+            }).slice(0, 15); // Limit to 15 series to get matches from all countries
+            
+            // Fetch matches for each upcoming series
+            for (const series of upcomingSeries) {
+                try {
+                    const seriesInfoResponse = await fetch(`${CRICKET_API_BASE_URL}/series_info?apikey=${CRICKET_API_KEY}&id=${series.id}`);
+                    const seriesInfo = await seriesInfoResponse.json();
+                    
+                    if (seriesInfo.status === 'success' && seriesInfo.data?.matchList) {
+                        const seriesMatches = seriesInfo.data.matchList
+                            .filter(m => !m.matchStarted && !m.matchEnded)
+                            .map(match => ({
+                                id: match.id,
+                                name: match.name,
+                                matchType: match.matchType?.toUpperCase(),
+                                status: match.status,
+                                venue: match.venue,
+                                date: match.date,
+                                dateTimeGMT: match.dateTimeGMT,
+                                dateTimeIST: formatDateIST(match.dateTimeGMT),
+                                teams: match.teams,
+                                teamInfo: match.teamInfo,
+                                score: match.score || [],
+                                seriesId: series.id,
+                                seriesName: series.name,
+                                fantasyEnabled: match.fantasyEnabled,
+                                hasSquad: match.hasSquad,
+                                matchStarted: match.matchStarted,
+                                matchEnded: match.matchEnded
+                            }));
+                        upcomingMatches.push(...seriesMatches);
+                    }
+                } catch (err) {
+                    console.error(`Error fetching series ${series.id}:`, err.message);
+                }
+            }
+        }
+        
+        // Remove duplicates from upcoming matches
+        const seenIds = new Set(allMatches.map(m => m.id));
+        upcomingMatches = upcomingMatches.filter(m => {
+            if (seenIds.has(m.id)) return false;
+            seenIds.add(m.id);
+            return true;
+        });
+        
+        // Sort upcoming matches by date
+        upcomingMatches.sort((a, b) => new Date(a.dateTimeGMT) - new Date(b.dateTimeGMT));
+        
+        // Separate current matches into live and completed
+        const liveMatches = allMatches.filter(m => m.matchStarted && !m.matchEnded);
+        const completedMatches = allMatches.filter(m => m.matchEnded);
         
         res.json({
             success: true,
             live: liveMatches,
             upcoming: upcomingMatches,
             completed: completedMatches,
-            total: matches.length
+            total: allMatches.length + upcomingMatches.length
         });
         
     } catch (error) {
